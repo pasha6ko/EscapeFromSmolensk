@@ -8,6 +8,10 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private float rotationSensivity;
     private Vector2 _inputVector;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     private void Update()
     {
         float eulerX = (-_inputVector.y * rotationSensivity) % 360;
