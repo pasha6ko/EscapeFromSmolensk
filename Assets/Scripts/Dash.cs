@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
-    [SerializeField] private Transform camera;
+    [SerializeField] private Transform cam;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private int dashMaxCount;
     [SerializeField] private float dashRecoverTime, dashForce;
@@ -18,7 +18,7 @@ public class Dash : MonoBehaviour
     {
         print("Dash");
         if (_dashCount <= 0) return;
-        Vector3 planeCameraDiraction = new Vector3(camera.forward.x, 0, camera.forward.z).normalized;
+        Vector3 planeCameraDiraction = new Vector3(cam.forward.x, 0, cam.forward.z).normalized;
         print(planeCameraDiraction);
         rb.AddForce(planeCameraDiraction * dashForce, ForceMode.VelocityChange);
         _dashCount--;

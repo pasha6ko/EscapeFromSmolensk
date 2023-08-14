@@ -1,11 +1,91 @@
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("State")]
+    public MovementStates movementState;
 
+    [Header("Player Components")]
+    [SerializeField] private Rigidbody playerRb;
+
+    [Header("Player Movenet Settings")]
+    [SerializeField, Range(0, 1)] private float speed;
+    [SerializeField, Range(0, 3)] private float JumpForse;
+
+    private Vector2 _inputVector;
+
+    private Collider _collider;
+
+    public enum MovementStates
+    {
+        Stay,
+        Run,
+        WallRun,
+        InAir
+    }
+
+    private void Start()
+    {
+        _collider = GetComponent<Collider>();
+    }
+
+    public void OnMove(InputValue input)
+    {
+        _inputVector = input.Get<Vector2>();
+    }
+
+    public void OnJump()
+    {
+        if (IsGrounded() == false) return;
+
+        Vector3 jump = new Vector3(0, 2f, 0) * JumpForse;
+        playerRb.AddForce(jump, ForceMode.Impulse);
+    }
+
+    private void FixedUpdate()
+    {
+        float magnitude = _inputVector.magnitude;
+        bool isGrounded = IsGrounded();
+        bool inAir = movementState == MovementStates.InAir;
+
+        if ((magnitude == 0 || inAir) && isGrounded)
+        {
+            movementState = MovementStates.Stay;
+        }
+        else if (magnitude > 0 && isGrounded)
+        {
+            movementState = MovementStates.Run;
+        }
+        else
+        {
+            movementState = MovementStates.InAir;
+        }
+
+        if (inAir) return;
+        if (isGrounded == false) return;
+
+        Run();
+    }
+
+    private void Run()
+    {
+        Vector3 direction = _inputVector.x * playerRb.transform.right + _inputVector.y * playerRb.transform.forward;
+        playerRb.AddForce(direction * speed, ForceMode.VelocityChange);
+    }
+
+    private bool IsGrounded()
+    {
+        float _distanceToTheGround = GetComponent<Collider>().bounds.extents.y;
+        return Physics.Raycast(playerRb.position, Vector3.down, _distanceToTheGround + 0.1f);
+    }
+
+    private void StateSwitcher(MovementStates state)
+    {
+        movementState = state;
+    }
+
+    /*
     public int hp; //Отделить
     [SerializeField]Transform camera;
     [Range(0.1f, 10f)] public float sensivity;
@@ -159,4 +239,5 @@ public class PlayerController : MonoBehaviour
     }
     float lastFireTime = 0;
     [SerializeField] GameObject pref;
+    */
 }
