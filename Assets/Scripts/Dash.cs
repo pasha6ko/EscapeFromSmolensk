@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
+    [Header("Player Components")]
     [SerializeField] private Transform cam;
     [SerializeField] private Rigidbody rb;
+
+    [Header("Dash Settings")]
     [SerializeField] private int dashMaxCount;
-    [SerializeField] private float dashRecoverTime, dashForce;
+    [SerializeField, Range(0, 20)] private float dashRecoverTime, dashForce;
+
     private int _dashCount;
     private Coroutine _dashRecoverProcess;
 
@@ -16,10 +20,8 @@ public class Dash : MonoBehaviour
     }
     public void OnDash()
     {
-        print("Dash");
         if (_dashCount <= 0) return;
         Vector3 planeCameraDiraction = new Vector3(cam.forward.x, 0, cam.forward.z).normalized;
-        print(planeCameraDiraction);
         rb.AddForce(planeCameraDiraction * dashForce, ForceMode.VelocityChange);
         _dashCount--;
 

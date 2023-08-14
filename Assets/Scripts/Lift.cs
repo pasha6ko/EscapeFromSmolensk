@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Lift : MonoBehaviour
 {
-    public Transform _mainHook;
-    public List<Transform> hooks = new List<Transform>();
+    [HideInInspector] public Transform _mainHook;
+    [HideInInspector] public List<Transform> hooks = new List<Transform>();
+
+    [Header("Player Components")]
     [SerializeField] private Transform cam;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private Transform testSphere;
-    [SerializeField] private float liftForce;
+
+    [Header("Lift Settings")]
+    [SerializeField, Range(0, 10)] private float liftForce;
+
     public void OnLook()
     {
         if (hooks.Count <= 0) return;
@@ -24,7 +28,6 @@ public class Lift : MonoBehaviour
             closestHook = hook;
         }
         _mainHook = closestHook;
-        testSphere.position = _mainHook.position;
     }
     public void OnLift()
     {
