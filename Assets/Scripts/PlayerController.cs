@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     /*
     public int hp; //Отделить
-    [SerializeField]Transform camera;
+    [SerializeField]Transform cam;
     [Range(0.1f, 10f)] public float sensivity;
     [Range(0.1f ,1000f)] public float StandartSpeed,RotationSpeed;
     [Range(0.1f, 2000f)] public float JumpForce;
@@ -137,9 +137,9 @@ public class PlayerController : MonoBehaviour
         //Отдельный скрипт
         //Новая система ввода
         #region Rotation
-        float eulerX = (camera.transform.rotation.eulerAngles.x + -Input.GetAxis("Mouse Y") * sensivity) % 360;
+        float eulerX = (cam.transform.rotation.eulerAngles.x + -Input.GetAxis("Mouse Y") * sensivity) % 360;
         float eulerY = (transform.rotation.eulerAngles.y + Input.GetAxis("Mouse X") * sensivity) % 360;
-        camera.transform.rotation = Quaternion.Euler(eulerX, eulerY, camera.transform.rotation.eulerAngles.z);
+        cam.transform.rotation = Quaternion.Euler(eulerX, eulerY, cam.transform.rotation.eulerAngles.z);
         transform.rotation = Quaternion.Euler(0, eulerY, 0);
         #endregion
         //Отдельный скрипт

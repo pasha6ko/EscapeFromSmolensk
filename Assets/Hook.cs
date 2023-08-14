@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class Hook : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        Lift lift = other.transform.GetComponent<Lift>();
+        lift.hooks.Add(transform);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        Lift lift = other.transform.GetComponent<Lift>();
+        lift.hooks.Remove(transform);
+        if(lift._mainHook == this) lift._mainHook = null;
+    }
+}
