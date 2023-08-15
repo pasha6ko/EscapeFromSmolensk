@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Components")]
     [SerializeField] private Rigidbody playerRb;
+    [SerializeField] private WallRun wallRun;
 
     [Header("Player Movenet Settings")]
     [SerializeField, Range(0, 1)] private float speed;
@@ -34,13 +35,29 @@ public class PlayerMovement : MonoBehaviour
     {
         _inputVector = input.Get<Vector2>();
     }
-
+    public void OnWallRun()
+    {
+        movementState = MovementStates.WallRun;
+    }
     public void OnJump()
     {
-        if (IsGrounded() == false) return;
+        if (!IsGrounded() || movementState != MovementStates.WallRun) return;
 
         Vector3 jump = new Vector3(0, 2f, 0) * JumpForse;
         playerRb.AddForce(jump, ForceMode.Impulse);
+        if (movementState == MovementStates.WallRun && wallRun!=null)
+        {
+            wallRun.ClearWay();
+        }
+        movementState = MovementStates.InAir;
+        
+    }
+    private void Update()
+    {
+        if (movementState == MovementStates.WallRun)
+        {
+
+        }
     }
 
     private void FixedUpdate()
@@ -48,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         float magnitude = _inputVector.magnitude;
         bool isGrounded = IsGrounded();
         bool inAir = movementState == MovementStates.InAir;
-
+        if (movementState == MovementStates.WallRun) return;
         if ((magnitude == 0 || inAir) && isGrounded)
         {
             movementState = MovementStates.Stay;
@@ -63,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (inAir) return;
-        if (isGrounded == false) return;
+        if (!isGrounded) return;
 
         Run();
     }
