@@ -4,13 +4,18 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
-    [SerializeField] private Slider healthBar;
-
+    public Action SwitchOn;
     public Action OnSmallDamage;
     public Action OnDamage;
     public Action OnCriticalDamage;
     public Action OnHeal;
+    public Action OnDeath;
+
+    [Header("HP Components")]
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private Dying death;
+    [Header("HP Settings")]
+    [SerializeField, Range(50, 250)] private float maxHealth;
 
     private float _health;
 
@@ -23,6 +28,16 @@ public class PlayerHP : MonoBehaviour
 
         UpdateBar();
 
+        OnDeath += HealingMax;
+        OnDeath += Clamping;
+        OnDeath += UpdateBar;
+
+        SwitchOn += SetActions;
+        SwitchOn?.Invoke();
+    }
+
+    public void SetActions()
+    {
         OnSmallDamage += SmallDamage;
         OnSmallDamage += UpdateBar;
         OnSmallDamage += Clamping;
@@ -60,9 +75,23 @@ public class PlayerHP : MonoBehaviour
         _health += Mathf.FloorToInt(maxHealth / 2);
     }
 
+    public void HealingMax()
+    {
+        _health += maxHealth;
+    }
+
     public void Clamping()
     {
         _health = Math.Clamp(_health, 0, maxHealth);
+
+        if (_health > 0) return;
+
+        OnSmallDamage = null;
+        OnDamage = null;
+        OnCriticalDamage = null;
+        OnHeal = null;
+
+        death.Death();
     }
 
     private void UpdateBar()

@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class DamageZone : RelativeZone
 {
-    [SerializeField] private float attackTime;
+    [Header("Damage Settings")]
+    [SerializeField, Range(0, 1)] private float attackTime;
 
     protected override IEnumerator Act()
     {

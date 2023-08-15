@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RelativeZone : MonoBehaviour
 {
+    [Header("Player Components")]
     [SerializeField] protected PlayerHP playerHP;
 
     protected bool _isPlayerCollide = false;
