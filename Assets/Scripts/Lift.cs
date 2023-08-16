@@ -24,7 +24,7 @@ public class Lift : MonoBehaviour
     {
         if (marker == null) return;
         if (_mainHook == null) marker.position = new Vector2(-10000, -10000);
-        else marker.position = Camera.main.WorldToScreenPoint(_mainHook.position);
+        else if(marker != null)marker.position = Camera.main.WorldToScreenPoint(_mainHook.position);
     }
     public void FixedUpdate()
     {
