@@ -8,7 +8,7 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private float rotationSensivity;
     private Vector2 _inputVector;
 
-    private void Start()
+    private void Start() //отделить
     {
         Cursor.lockState = CursorLockMode.Locked;
     }

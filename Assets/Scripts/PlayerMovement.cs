@@ -23,44 +23,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(0, 5)] private float JumpForse;
 
     private Vector2 _inputVector;
-
-    private Collider _collider;
-
-    private void Start()
-    {
-        _collider = GetComponent<Collider>();
-    }
-
-    public void OnMove(InputValue input)
-    {
-        _inputVector = input.Get<Vector2>();
-    }
-    public void OnWallRun()
-    {
-        movementState = MovementStates.WallRun;
-    }
-    public void OnJump()
-    {
-        if (!IsGrounded() && movementState != MovementStates.WallRun) return;
-
-        Vector3 jump = Vector3.up * JumpForse;
-        if (movementState == MovementStates.WallRun && wallRun != null) wallRun.ClearWay();
-        playerRb.AddForce(jump, ForceMode.VelocityChange);
-        movementState = MovementStates.InAir;
-        
-    }
-
     private void FixedUpdate()
     {
         float magnitude = _inputVector.magnitude;
-        bool isGrounded = IsGrounded();
         bool inAir = movementState == MovementStates.InAir;
         if (movementState == MovementStates.WallRun) return;
-        if ((magnitude == 0 || inAir) && isGrounded)
+        if ((magnitude == 0 || inAir) && IsGrounded())
         {
             movementState = MovementStates.Stay;
         }
-        else if (magnitude > 0 && isGrounded)
+        else if (magnitude > 0 && IsGrounded())
         {
             movementState = MovementStates.Run;
         }
@@ -70,9 +42,30 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (inAir) return;
-        if (!isGrounded) return;
+        if (!IsGrounded()) return;
 
         Run();
+    }
+
+    public void OnMove(InputValue input)
+    {
+        _inputVector = input.Get<Vector2>();
+    }
+
+    public void OnWallRun()
+    {
+        movementState = MovementStates.WallRun;
+    }
+
+    public void OnJump()
+    {
+        if (!IsGrounded() && movementState != MovementStates.WallRun) return;
+
+        Vector3 jump = Vector3.up * JumpForse;
+        if (movementState == MovementStates.WallRun && wallRun != null) wallRun.ClearWay();
+        playerRb.AddForce(jump, ForceMode.VelocityChange);
+        movementState = MovementStates.InAir;
+        
     }
 
     private void Run()

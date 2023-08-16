@@ -30,6 +30,7 @@ public class WallRun : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.transform.CompareTag("Wall")) return;
+        Debug.Log($"Collision : {gameObject.name}");
         ClearWay();
         Vector3 contactPoint = new Vector3(collision.GetContact(0).point.x, transform.position.y, collision.GetContact(0).point.z);
         Vector3 rayDiraction = contactPoint - gameObject.transform.position;

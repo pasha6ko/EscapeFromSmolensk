@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lift : MonoBehaviour
 {
-    [HideInInspector] public Transform _mainHook;
+    [HideInInspector] public Transform mainHook;
     [HideInInspector] public List<Transform> hooks = new List<Transform>();
 
     [Header("Player Components")]
@@ -20,13 +20,14 @@ public class Lift : MonoBehaviour
     [SerializeField, Range(0f, 10f)] private float recoverTime;
     private bool canLift = true;
 
-    public void Update()
+    private void Update()
     {
         if (marker == null) return;
-        if (_mainHook == null) marker.position = new Vector2(-10000, -10000);
-        else if(marker != null)marker.position = Camera.main.WorldToScreenPoint(_mainHook.position);
+        if (mainHook == null) marker.position = new Vector2(-10000, -10000);
+        else if (marker != null) marker.position = Camera.main.WorldToScreenPoint(mainHook.position);
     }
-    public void FixedUpdate()
+
+    private void FixedUpdate()
     {
         if (hooks.Count <= 0) return;
         float max = float.MinValue;
@@ -39,32 +40,33 @@ public class Lift : MonoBehaviour
             max = diraction.magnitude;
             closestHook = hook;
         }
-        _mainHook = closestHook;
+        mainHook = closestHook;
     }
 
     public void OnLift()
     {
         if (!canLift) return;
-        if (_mainHook == null) return;
+        if (mainHook == null) return;
         playerMovement.OnJump();
-        Vector3 diraction =  _mainHook.position- transform.position;
+        Vector3 diraction = mainHook.position - transform.position;
         rb.velocity = Vector3.zero;
         rb.AddForce(diraction * liftForce, ForceMode.VelocityChange);
         canLift = false;
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, ropeStartPoint.position);
-        lineRenderer.SetPosition(1, _mainHook.position);
+        lineRenderer.SetPosition(1, mainHook.position);
         StartCoroutine(LiftRecovery());
-    
+
     }
-    IEnumerator LiftRecovery()
+
+    private IEnumerator LiftRecovery()
     {
         float time = 0;
         while (time < recoverTime)
         {
             time += Time.deltaTime;
             lineRenderer.SetPosition(0, ropeStartPoint.position);
-            yield return null;  
+            yield return null;
         }
         canLift = true;
         lineRenderer.enabled = false;

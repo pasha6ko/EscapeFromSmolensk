@@ -11,7 +11,6 @@ public class CheckPoint : MonoBehaviour
     private void Start()
     {
         _points.Add(transform.position);
-
         playerHP.OnDeath += SetPosition;
     }
 

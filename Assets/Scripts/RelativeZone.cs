@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RelativeZone : MonoBehaviour
+public abstract class RelativeZone : MonoBehaviour
 {
     [Header("Player Components")]
     [SerializeField] protected PlayerHP playerHP;
