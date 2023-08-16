@@ -6,6 +6,8 @@ public class RelativeZone : MonoBehaviour
 {
     [Header("Player Components")]
     [SerializeField] protected PlayerHP playerHP;
+    [Header("Act Settings")]
+    [SerializeField, Range(0, 1)] protected float timeBetweenActes;
 
     protected bool _isPlayerCollide = false;
 
