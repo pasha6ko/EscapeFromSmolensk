@@ -1434,7 +1434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054651331}
   m_Layer: 0
-  m_Name: Hooks
+  m_Name: HooksGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1468,7 +1468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1056122945}
   m_Layer: 0
-  m_Name: Checkpoints
+  m_Name: CheckpointsGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1676,8 +1676,8 @@ MonoBehaviour:
   playerCheckPoint: {fileID: 2042411664}
   playerHP: {fileID: 2042411663}
   deathVideo: {fileID: 1710347591}
-  deathRawImage: {fileID: 490538391}
-  skipDeath: {fileID: 1380765924}
+  deathUI: {fileID: 0}
+  playerAnyKeyInput: {fileID: 1380765924}
 --- !u!114 &1380765924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1719,7 +1719,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1563724311}
   m_Layer: 5
-  m_Name: HP Block
+  m_Name: HP Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

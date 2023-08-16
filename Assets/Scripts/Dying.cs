@@ -14,18 +14,18 @@ public class Dying : MonoBehaviour
     [SerializeField] private PlayerHP playerHP;
     [Header("Death Components")]
     [SerializeField] private GameObject deathVideo;
-    [SerializeField] private GameObject deathRawImage;
-    [SerializeField] private PlayerInput skipDeath;
+    [SerializeField] private GameObject deathUI;
+    [SerializeField] private PlayerInput playerAnyKeyInput;
 
     private void Start()
     {
-        skipDeath.enabled = false;
+        playerAnyKeyInput.enabled = false;
     }
 
     public void Death()
     {
         StartCoroutine(Recovery());
-        skipDeath.enabled = true;
+        playerAnyKeyInput.enabled = true;
     }
 
     public void OnAnyKeyClick()
@@ -35,29 +35,29 @@ public class Dying : MonoBehaviour
 
         playerInput.enabled = true;
         deathVideo.SetActive(false);
-        deathRawImage.SetActive(false);
+        deathUI.SetActive(false);
 
         StopCoroutine(Recovery());
-        skipDeath.enabled = false;
+        playerAnyKeyInput.enabled = false;
     }
 
     private IEnumerator Recovery()
     {
         playerInput.enabled = false;
         deathVideo.SetActive(true);
-        deathRawImage.SetActive(true);
+        deathUI.SetActive(true);
 
         yield return new WaitForSeconds(10f);
 
-        if (!skipDeath.enabled) yield break;
+        if (!playerAnyKeyInput.enabled) yield break;
 
-        skipDeath.enabled = false;
+        playerAnyKeyInput.enabled = false;
 
         playerHP.OnDeath?.Invoke();
         playerHP.SwitchOn?.Invoke();
 
         playerInput.enabled = true;
         deathVideo.SetActive(false);
-        deathRawImage.SetActive(false);
+        deathUI.SetActive(false);
     }
 }
