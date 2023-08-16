@@ -23,9 +23,11 @@ public class PlayerHP : MonoBehaviour
     {
         _health = maxHealth;
 
-        healthBar.minValue = 0;
-        healthBar.maxValue = _health;
-
+        if (healthBar != null)
+        {
+            healthBar.minValue = 0;
+            healthBar.maxValue = _health;
+        }
         UpdateBar();
 
         OnDeath += HealingMax;
@@ -91,11 +93,13 @@ public class PlayerHP : MonoBehaviour
         OnCriticalDamage = null;
         OnHeal = null;
 
+        if (death == null) return;
         death.Death();
     }
 
     private void UpdateBar()
     {
+        if (healthBar == null) return;
         healthBar.value = _health;
     }
 }

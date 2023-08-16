@@ -16,6 +16,6 @@ public class Hook : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         Lift lift = other.transform.GetComponent<Lift>();
         lift.hooks.Remove(transform);
-        if(lift._mainHook == this) lift._mainHook = null;
+        if(lift._mainHook == transform) lift._mainHook = null;
     }
 }

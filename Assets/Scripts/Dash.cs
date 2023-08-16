@@ -5,6 +5,7 @@ public class Dash : MonoBehaviour
 {
     [Header("Player Components")]
     [SerializeField] private Transform cam;
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody rb;
 
     [Header("Dash Settings")]
@@ -28,8 +29,10 @@ public class Dash : MonoBehaviour
     }
     public void DeshRecover()
     {
-        if (_dashRecoverProcess == null)
-            _dashRecoverProcess = StartCoroutine(DeshRecoverAs());
+        if (_dashRecoverProcess != null)return;
+        if (!playerMovement.IsGrounded()) return;
+        if (_dashCount >= dashMaxCount) return;
+        _dashRecoverProcess = StartCoroutine(DeshRecoverAs());
     }
     IEnumerator DeshRecoverAs()
     {

@@ -3,6 +3,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public enum MovementStates
+    {
+        Stay,
+        Run,
+        WallRun,
+        InAir
+    }
+
     [Header("State")]
     public MovementStates movementState;
 
@@ -12,19 +20,11 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Player Movenet Settings")]
     [SerializeField, Range(0, 1)] private float speed;
-    [SerializeField, Range(0, 3)] private float JumpForse;
+    [SerializeField, Range(0, 5)] private float JumpForse;
 
     private Vector2 _inputVector;
 
     private Collider _collider;
-
-    public enum MovementStates
-    {
-        Stay,
-        Run,
-        WallRun,
-        InAir
-    }
 
     private void Start()
     {
@@ -41,23 +41,13 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnJump()
     {
-        if (!IsGrounded() || movementState != MovementStates.WallRun) return;
+        if (!IsGrounded() && movementState != MovementStates.WallRun) return;
 
-        Vector3 jump = new Vector3(0, 2f, 0) * JumpForse;
-        playerRb.AddForce(jump, ForceMode.Impulse);
-        if (movementState == MovementStates.WallRun && wallRun!=null)
-        {
-            wallRun.ClearWay();
-        }
+        Vector3 jump = Vector3.up * JumpForse;
+        if (movementState == MovementStates.WallRun && wallRun != null) wallRun.ClearWay();
+        playerRb.AddForce(jump, ForceMode.VelocityChange);
         movementState = MovementStates.InAir;
         
-    }
-    private void Update()
-    {
-        if (movementState == MovementStates.WallRun)
-        {
-
-        }
     }
 
     private void FixedUpdate()
@@ -91,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         playerRb.AddForce(direction * speed, ForceMode.VelocityChange);
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         float _distanceToTheGround = GetComponent<Collider>().bounds.extents.y;
         return Physics.Raycast(playerRb.position, Vector3.down, _distanceToTheGround + 0.1f);

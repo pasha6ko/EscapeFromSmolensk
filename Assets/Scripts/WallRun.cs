@@ -30,6 +30,7 @@ public class WallRun : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.transform.CompareTag("Wall")) return;
+        ClearWay();
         Vector3 contactPoint = new Vector3(collision.GetContact(0).point.x, transform.position.y, collision.GetContact(0).point.z);
         Vector3 rayDiraction = contactPoint - gameObject.transform.position;
         BuildWay(transform.position,rayDiraction,maxPointsCount);
@@ -47,7 +48,6 @@ public class WallRun : MonoBehaviour
     void Update()
     {
         if (playerMovment.movementState != PlayerMovement.MovementStates.WallRun) return;
-        rb.isKinematic = true;
         if (wayPoints.Count <= 2)
         {
             playerMovment.movementState = PlayerMovement.MovementStates.InAir;
@@ -75,7 +75,6 @@ public class WallRun : MonoBehaviour
         Debug.DrawRay(rayStart, rayDiraction, Color.yellow,10f);
         if (Physics.Raycast(ray, out RaycastHit hit, maxRayChekLenght))
         {
-            print("Draw");
             GameObject hitPoint = new GameObject();
             hitPoint.transform.position = hit.point;
             hitPoint.transform.rotation = Quaternion.LookRotation(hit.normal, Vector3.up);
@@ -87,7 +86,6 @@ public class WallRun : MonoBehaviour
                 directionToLeft = directionToLeft.normalized - transform.forward;
                 wayDirection = (directionToLeft.magnitude < directionToRight.magnitude ? WallWayDiraction.Left : WallWayDiraction.Right);
             }
-            print(hitPoint.transform.right);
             Debug.DrawRay(rayStart, hitPoint.transform.right * (int)wayDirection * pointDistance, Color.red, 10f);
             Vector3 nextRayStart = hit.point + hitPoint.transform.forward * distanceFromWall + hitPoint.transform.right * (int)wayDirection * pointDistance;
             Vector3 nextRayDiraction = -hitPoint.transform.forward;
