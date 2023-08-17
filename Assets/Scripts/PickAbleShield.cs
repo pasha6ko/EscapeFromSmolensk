@@ -5,13 +5,12 @@ using UnityEngine.UIElements;
 
 public class PickAbleShield : MonoBehaviour
 {
-    [Header("Player Components")]
-    [SerializeField] private PlayerHP playerHP;
     [Header("Shield Settings")]
     [SerializeField, Range(0,10)] private float timeForShield = 5f;
 
     private Collider _myCollider;
     private MeshRenderer _myMeshRenderer;
+    private PlayerHP _playerHP;
 
     private void Start()
     {
@@ -23,6 +22,8 @@ public class PickAbleShield : MonoBehaviour
     {
         if (!other.transform.CompareTag("Player")) return;
 
+        _playerHP = other.GetComponent<PlayerHP>();
+
         _myCollider.enabled = false;
         _myMeshRenderer.enabled = false;
 
@@ -32,12 +33,12 @@ public class PickAbleShield : MonoBehaviour
 
     private IEnumerator NoDamage(Collider enemy)
     {
-        playerHP.isArmored = true;
+        _playerHP.isArmored = true;
 
         yield return new WaitForSeconds(timeForShield);
         Destroy(gameObject);
 
-        if (!playerHP.isArmored) yield break;
-        playerHP.isArmored = false;
+        if (!_playerHP.isArmored) yield break;
+        _playerHP.isArmored = false;
     }
 }

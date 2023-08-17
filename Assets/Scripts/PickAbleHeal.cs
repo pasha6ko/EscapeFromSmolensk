@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PickAbleHeal : MonoBehaviour
 {
-    [Header("Player Components")]
-    [SerializeField] private PlayerHP playerHP;
-
+    private PlayerHP _playerHP;
     private void OnTriggerEnter(Collider other)
     {
         if (!other.transform.CompareTag("Player")) return;
 
-        playerHP.OnHeal?.Invoke();
+        _playerHP = other.GetComponent<PlayerHP>();    
+
+        _playerHP.OnHeal?.Invoke();
         Destroy(gameObject);
     }
 }

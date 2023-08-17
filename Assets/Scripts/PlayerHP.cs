@@ -59,7 +59,7 @@ public class PlayerHP : MonoBehaviour
     public void SmallDamage()
     {
         if (isArmored) return;
-        _health -= Mathf.FloorToInt(maxHealth / 8);
+        _health -= Mathf.FloorToInt(maxHealth / 7);
     }
 
     public void Damage()
