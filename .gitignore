@@ -13,7 +13,7 @@
 #IgnorPakages
 /Assets/Dark City 2/*
 #IgnorMeta
-*.meta
+
 #Videos
 *.mp4
 

@@ -29,6 +29,7 @@ public class WallRun : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        print("Collision");
         if (!collision.transform.CompareTag("Wall")) return;
         Debug.Log($"Collision : {gameObject.name}");
         ClearWay();
