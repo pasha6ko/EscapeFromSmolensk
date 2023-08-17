@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class RelativeZone : MonoBehaviour
 {
     [Header("Player Components")]
-    [SerializeField] protected PlayerHP playerHP;
+    protected PlayerHP playerHP;
     [Header("Act Settings")]
     [SerializeField, Range(0, 1)] protected float timeBetweenActes;
 
@@ -14,12 +14,16 @@ public abstract class RelativeZone : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!collision.transform.CompareTag("Player")) return;
+        playerHP = collision.transform.GetComponent<PlayerHP>();
         _isPlayerCollide = true;
         StartCoroutine(Act());
     }
 
     private void OnCollisionExit(Collision collision)
     {
+        playerHP = null;
+        StopCoroutine(Act());
         _isPlayerCollide = false;
     }
 

@@ -33,7 +33,7 @@ public class DamageZone : RelativeZone
                 break;
         }
 
-        while (_isPlayerCollide)
+        while (_isPlayerCollide && playerHP!=null)
         {
             _action?.Invoke();
 

@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
     [Header("Player Components")]
     [SerializeField] private Death playerDeath;
+    private GameObject playerPref;
 
     private List<Vector3> _points = new List<Vector3>();
 
@@ -12,13 +14,18 @@ public class CheckPoint : MonoBehaviour
     {
         _points.Add(transform.position);
         playerDeath.OnDeath += SetPosition;
+        playerPref = Instantiate(gameObject);
+        playerPref.SetActive(false);
     }
 
     public void SetPosition()
     {
         if (_points.Count == 0) return;
 
-        transform.position = _points[_points.Count - 1];
+        playerPref.SetActive(true); 
+        playerPref.transform.position = _points[_points.Count - 1];
+        CheckPoint cloneChekPoint = playerPref.GetComponent<CheckPoint>();
+        cloneChekPoint.AddLastCheckPoint(_points[_points.Count - 1]);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,7 +37,11 @@ public class CheckPoint : MonoBehaviour
 
         if (IsCheckpointCollected(checkpointPosition)) return;
 
-        _points.Add(checkpointPosition);
+        AddLastCheckPoint(checkpointPosition);
+    }
+    public void AddLastCheckPoint(Vector3 position)
+    {
+        _points.Add(position);
     }
 
     private bool IsCheckpointCollected(Vector3 checkingCheckpointPosition)
