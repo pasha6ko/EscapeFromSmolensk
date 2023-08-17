@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Death : MonoBehaviour
 {
@@ -14,6 +13,7 @@ public class Death : MonoBehaviour
     [Header("Death Components")]
     [SerializeField] private GameObject deathVideo;
     [SerializeField] private GameObject deathUI;
+
     private bool isDead = false;
 
     public void StartDeath()
