@@ -574,49 +574,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.0000024, y: 0.32862595, z: 7.0000024}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &270139922 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2707760201120264029, guid: 94171608cbc12dd49bb08b6d307d84e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 291248923}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &270139930 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5707485274259336424, guid: 94171608cbc12dd49bb08b6d307d84e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 291248923}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270139922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecac6e132cb810c4489d63f84ee0118f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!54 &270139933 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 8113830094378422181, guid: 94171608cbc12dd49bb08b6d307d84e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 291248923}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &270139938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270139922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9949fb470a0034349bcd70c28a6a9a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMovment: {fileID: 270139930}
-  rb: {fileID: 270139933}
-  speed: 5
-  pointDistance: 2
-  maxPointsCount: 20
-  maxRayChekLenght: 1.5
-  distanceFromWall: 0.5
 --- !u!1001 &291248923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -635,11 +592,6 @@ PrefabInstance:
       propertyPath: marker
       value: 
       objectReference: {fileID: 800913201}
-    - target: {fileID: 5265277784272760678, guid: 94171608cbc12dd49bb08b6d307d84e9,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8455172156706307637, guid: 94171608cbc12dd49bb08b6d307d84e9,
         type: 3}
       propertyPath: m_RootOrder
@@ -696,14 +648,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4915381090976752613, guid: 94171608cbc12dd49bb08b6d307d84e9, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2707760201120264029, guid: 94171608cbc12dd49bb08b6d307d84e9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 270139938}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94171608cbc12dd49bb08b6d307d84e9, type: 3}
 --- !u!1 &410087039
 GameObject:
