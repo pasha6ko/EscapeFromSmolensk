@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 40587087426889541}
   - component: {fileID: 1396537709182000263}
   - component: {fileID: 1975168017717780936}
+  - component: {fileID: 8620764533353062638}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -127,7 +128,7 @@ Transform:
   - {fileID: 5704536926024628076}
   - {fileID: 8753351698116925412}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3298675049666311528
 MeshFilter:
@@ -289,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementState: 0
   playerRb: {fileID: 8113830094378422181}
-  wallRun: {fileID: 0}
+  wallRun: {fileID: 5265277784272760678}
   speed: 0.2
   JumpForse: 4.6
 --- !u!114 &2710055985397169473
@@ -345,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  death: {fileID: 0}
+  death: {fileID: 8620764533353062638}
   maxHealth: 100
 --- !u!114 &40587087426889541
 MonoBehaviour:
@@ -359,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca540dc875ada6149b53fed4b82d27b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: {fileID: -6016210428057652090}
+  playerDeath: {fileID: 8620764533353062638}
 --- !u!120 &1396537709182000263
 LineRenderer:
   serializedVersion: 2
@@ -477,14 +478,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovment: {fileID: 5707485274259336424}
-  wayVisualisation: {fileID: 0}
-  debugParent: {fileID: 0}
   rb: {fileID: 8113830094378422181}
   speed: 5
   pointDistance: 2
   maxPointsCount: 20
   maxRayChekLenght: 1.5
   distanceFromWall: 0.5
+--- !u!114 &8620764533353062638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707760201120264029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad246eca8e6bc694eb88e9913c8b093d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 5707485274259336424}
+  playerCheckPoint: {fileID: 40587087426889541}
+  deathVideo: {fileID: 0}
+  deathUI: {fileID: 0}
 --- !u!1 &4915381090976752613
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8753351698116925412
 Transform:
   m_ObjectHideFlags: 0
@@ -536,7 +551,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4915381090976752613}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -607,8 +622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovment: {fileID: 5707485274259336424}
-  wayVisualisation: {fileID: 0}
-  debugParent: {fileID: 0}
   rb: {fileID: 8113830094378422181}
   speed: 5
   pointDistance: 2

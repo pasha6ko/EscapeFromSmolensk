@@ -8,8 +8,6 @@ public class WallRun : MonoBehaviour
 {
     [Header("Player Components")]
     [SerializeField] private PlayerMovement playerMovment;
-    [SerializeField] private GameObject wayVisualisation;
-    [SerializeField] private Transform debugParent;
     [SerializeField] private Rigidbody rb;
 
     [Header("Settings")]
@@ -29,7 +27,6 @@ public class WallRun : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        print("Collision");
         if (!collision.transform.CompareTag("Wall")) return;
         Debug.Log($"Collision : {gameObject.name}");
         ClearWay();

@@ -4,14 +4,14 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     [Header("Player Components")]
-    [SerializeField] private PlayerHP playerHP;
+    [SerializeField] private Death playerDeath;
 
     private List<Vector3> _points = new List<Vector3>();
 
     private void Start()
     {
         _points.Add(transform.position);
-        playerHP.OnDeath += SetPosition;
+        playerDeath.OnDeath += SetPosition;
     }
 
     public void SetPosition()
