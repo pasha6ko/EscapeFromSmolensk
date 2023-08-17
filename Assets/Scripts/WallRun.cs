@@ -28,7 +28,6 @@ public class WallRun : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.transform.CompareTag("Wall")) return;
-        Debug.Log($"Collision : {gameObject.name}");
         ClearWay();
         Vector3 contactPoint = new Vector3(collision.GetContact(0).point.x, transform.position.y, collision.GetContact(0).point.z);
         Vector3 rayDiraction = contactPoint - gameObject.transform.position;
@@ -41,7 +40,16 @@ public class WallRun : MonoBehaviour
     public void StartWallRun()
     {
         print("StartWallRun");
+        rb.useGravity = false;
         playerMovment.movementState = PlayerMovement.MovementStates.WallRun;
+    }
+    public void OnJump()
+    {
+        if (playerMovment == null) return;
+        rb.useGravity = true;
+        playerMovment.movementState = PlayerMovement.MovementStates.Run;
+        playerMovment.OnJump();
+        ClearWay();
     }
     
     void Update()
@@ -49,8 +57,7 @@ public class WallRun : MonoBehaviour
         if (playerMovment.movementState != PlayerMovement.MovementStates.WallRun) return;
         if (wayPoints.Count <= 2)
         {
-            playerMovment.movementState = PlayerMovement.MovementStates.InAir;
-            ClearWay();
+            OnJump();
             return;
         }
         index += Time.deltaTime * speed/pointDistance;
@@ -58,9 +65,6 @@ public class WallRun : MonoBehaviour
         if (index < 1) return;     
         index = 0;
         wayPoints.RemoveAt(0);
-                
-        
-        
     }
     
     public void BuildWay(Vector3 rayStart,Vector3 rayDiraction, int iteration, WallWayDiraction wayDirection = WallWayDiraction.None)

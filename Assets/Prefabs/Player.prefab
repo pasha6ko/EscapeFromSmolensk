@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 1396537709182000263}
   - component: {fileID: 8620764533353062638}
   - component: {fileID: 3645478935181073985}
+  - component: {fileID: 3958597624039815675}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -289,9 +290,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementState: 0
   playerRb: {fileID: 8113830094378422181}
-  wallRun: {fileID: 0}
-  speed: 0.2
-  JumpForse: 4.6
+  wallRun: {fileID: 3645478935181073985}
+  playerCollider: {fileID: 4877442155352681570}
+  speed: 6
+  jumpForce: 5
+  invertedInput: 0
 --- !u!114 &2710055985397169473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,8 +315,10 @@ MonoBehaviour:
   marker: {fileID: 0}
   lineRenderer: {fileID: 1396537709182000263}
   ropeStartPoint: {fileID: 8770793504835693229}
-  liftForce: 0.8
+  FOV: 80
+  liftForce: 1
   recoverTime: 2
+  inAirLockTime: 1
 --- !u!114 &6265510210176287245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,8 +335,51 @@ MonoBehaviour:
   playerMovement: {fileID: 5707485274259336424}
   rb: {fileID: 8113830094378422181}
   dashMaxCount: 3
+  dashTime: 0.6
   dashRecoverTime: 1
-  dashForce: 20
+  dashForce: 1
+  dashCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.80133593
+      inSlope: 0.69676036
+      outSlope: 0.69676036
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.28455052
+      value: 0.99959946
+      inSlope: -0.17775181
+      outSlope: -0.17775181
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9206129
+      value: 0.33029392
+      inSlope: -3.0229807
+      outSlope: -3.0229807
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.41239166
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4.1605477
+      outSlope: -4.1605477
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _dashCount: 0
 --- !u!114 &-6016210428057652090
 MonoBehaviour:
@@ -348,7 +396,6 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   death: {fileID: 8620764533353062638}
   maxHealth: 100
-  _health: 0
 --- !u!114 &40587087426889541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +548,19 @@ MonoBehaviour:
   maxPointsCount: 20
   maxRayChekLenght: 1.5
   distanceFromWall: 0.5
+--- !u!114 &3958597624039815675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707760201120264029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df90ecd340210f4994b04bb5e453fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: 1
 --- !u!1 &7048112186465603848
 GameObject:
   m_ObjectHideFlags: 0

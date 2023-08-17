@@ -14,17 +14,26 @@ public class Lift : MonoBehaviour
     [SerializeField] private Transform marker;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Transform ropeStartPoint;
+    [SerializeField] private float FOV;
 
     [Header("Lift Settings")]
     [SerializeField, Range(0f, 10f)] private float liftForce;
     [SerializeField, Range(0f, 10f)] private float recoverTime;
+    [SerializeField] private float inAirLockTime;
     private bool canLift = true;
 
     private void Update()
     {
         if (marker == null) return;
-        if (mainHook == null) marker.position = new Vector2(-10000, -10000);
-        else if (marker != null) marker.position = Camera.main.WorldToScreenPoint(mainHook.position);
+        if (mainHook == null || !InFieldOfView(mainHook))
+        {
+            marker.gameObject.SetActive(false);
+            return;
+        }
+        if(!InFieldOfView(mainHook)) return;
+        marker.gameObject.SetActive(true);
+        marker.position = Camera.main.WorldToScreenPoint(mainHook.position);
+        
     }
 
     private void FixedUpdate()
@@ -47,9 +56,9 @@ public class Lift : MonoBehaviour
     {
         if (!canLift) return;
         if (mainHook == null) return;
-        playerMovement.OnJump();
         Vector3 diraction = mainHook.position - transform.position;
         rb.velocity = Vector3.zero;
+        playerMovement.movementState = PlayerMovement.MovementStates.InAir;
         rb.AddForce(diraction * liftForce, ForceMode.VelocityChange);
         canLift = false;
         lineRenderer.enabled = true;
@@ -65,10 +74,24 @@ public class Lift : MonoBehaviour
         while (time < recoverTime)
         {
             time += Time.deltaTime;
+            if(time < inAirLockTime) playerMovement.movementState = PlayerMovement.MovementStates.InAir;
             lineRenderer.SetPosition(0, ropeStartPoint.position);
             yield return null;
         }
         canLift = true;
         lineRenderer.enabled = false;
+    }
+    bool InFieldOfView(Transform point)
+    {
+        Vector3 direction = point.transform.position - cam.transform.position;
+
+        Vector3 angle = Quaternion.FromToRotation(cam.forward, direction).eulerAngles;
+        if ((angle.x > 360 - 20 || angle.x < 0 + 20) && (angle.y > 360 - FOV / 2 || angle.y < FOV / 2))
+        {
+            Debug.DrawRay(transform.position + Vector3.up, point.transform.position - transform.position, Color.green);
+            return true;
+        }
+        Debug.DrawRay(transform.position + Vector3.up, point.transform.position - transform.position, Color.red);
+        return false;
     }
 }

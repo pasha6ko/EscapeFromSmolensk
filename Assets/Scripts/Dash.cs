@@ -11,7 +11,8 @@ public class Dash : MonoBehaviour
 
     [Header("Dash Settings")]
     [SerializeField] private int dashMaxCount;
-    [SerializeField, Range(0, 20)] private float dashRecoverTime, dashForce;
+    [SerializeField, Range(0, 20)] private float dashTime, dashRecoverTime, dashForce;
+    [SerializeField] private AnimationCurve dashCurve;
 
     [SerializeField] private int _dashCount;
     private Coroutine _dashRecoverProcess;
@@ -33,9 +34,10 @@ public class Dash : MonoBehaviour
     public void OnDash()
     {
         if (_dashCount <= 0) return;
-        if (_inputVector == Vector2.zero) _inputVector = Vector2.up; 
-        Vector3 forceDirection = transform.forward * _inputVector.y + transform.right * _inputVector.x;
-        rb.AddForce(forceDirection * dashForce, ForceMode.VelocityChange);
+        StartCoroutine(DashProcess());
+        if (_inputVector == Vector2.zero) _inputVector = Vector2.up;
+        if (playerMovement != null) playerMovement.movementState = PlayerMovement.MovementStates.Run;
+        StartCoroutine(DashProcess());
         _dashCount--;
         DeshRecover();
 
@@ -43,11 +45,23 @@ public class Dash : MonoBehaviour
     public void DeshRecover()
     {
         if (_dashRecoverProcess != null) return;
+        if (playerMovement == null) return;
         if (!playerMovement.IsGrounded()) return;
         if (_dashCount >= dashMaxCount) return;
         _dashRecoverProcess = StartCoroutine(DeshRecoverAs());
     }
-    IEnumerator DeshRecoverAs()
+    private IEnumerator DashProcess()
+    {
+        float timer = 0;
+        while (timer <= 1)
+        {
+            timer += Time.deltaTime / dashTime;
+            float dashForceValue = dashCurve.Evaluate(timer) * dashForce;
+            playerMovement.SetDashForce(dashForceValue);
+            yield return null;
+        }
+    }
+    private IEnumerator DeshRecoverAs()
     {
         while (_dashCount < dashMaxCount)
         {
