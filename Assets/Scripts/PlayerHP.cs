@@ -14,6 +14,7 @@ public class PlayerHP : MonoBehaviour
     [SerializeField] private Death death;
     [Header("HP Settings")]
     [SerializeField, Range(50, 250)] private float maxHealth;
+    [SerializeField] public bool isArmored = false;
 
     private float _health;
 
@@ -57,6 +58,7 @@ public class PlayerHP : MonoBehaviour
 
     public void SmallDamage()
     {
+        if (isArmored) return;
         _health -= Mathf.FloorToInt(maxHealth / 8);
     }
 

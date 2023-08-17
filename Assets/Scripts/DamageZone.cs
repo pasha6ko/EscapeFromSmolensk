@@ -5,11 +5,11 @@ using UnityEngine;
 public class DamageZone : RelativeZone
 {
     [Header("Damage Settings")]
-    [SerializeField] private DamagesTypes damageType;
+    [SerializeField] public DamagesTypes damageType;
 
     private Action _action;
 
-    private enum DamagesTypes
+    public enum DamagesTypes
     {
         NoDamage,
         Small,

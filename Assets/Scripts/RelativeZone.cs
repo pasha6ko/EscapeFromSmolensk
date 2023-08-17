@@ -10,19 +10,19 @@ public abstract class RelativeZone : MonoBehaviour
 
     protected bool _isPlayerCollide = false;
 
-
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.transform.CompareTag("Player")) return;
         playerHP = collision.transform.GetComponent<PlayerHP>();
         _isPlayerCollide = true;
+        StopAllCoroutines();
         StartCoroutine(Act());
     }
 
     private void OnCollisionExit(Collision collision)
     {
         playerHP = null;
-        StopCoroutine(Act());
+        StopAllCoroutines();
         _isPlayerCollide = false;
     }
 
