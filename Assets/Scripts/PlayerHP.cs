@@ -15,7 +15,7 @@ public class PlayerHP : MonoBehaviour
     [Header("HP Settings")]
     [SerializeField, Range(50, 250)] private float maxHealth;
 
-    public float _health;
+    private float _health;
 
     private void Start()
     {

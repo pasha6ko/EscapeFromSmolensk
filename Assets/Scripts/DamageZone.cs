@@ -11,6 +11,7 @@ public class DamageZone : RelativeZone
 
     private enum DamagesTypes
     {
+        NoDamage,
         Small,
         Medium,
         Large
@@ -33,7 +34,7 @@ public class DamageZone : RelativeZone
                 break;
         }
 
-        while (_isPlayerCollide && playerHP != null)
+        while (_isPlayerCollide && playerHP != null && _action != null)
         {
             _action?.Invoke();
 
