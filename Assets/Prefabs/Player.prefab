@@ -103,7 +103,6 @@ GameObject:
   - component: {fileID: 6265510210176287245}
   - component: {fileID: -6016210428057652090}
   - component: {fileID: 40587087426889541}
-  - component: {fileID: 3098982330809078993}
   - component: {fileID: 1396537709182000263}
   m_Layer: 6
   m_Name: Player
@@ -289,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementState: 0
   playerRb: {fileID: 8113830094378422181}
-  wallRun: {fileID: 3098982330809078993}
+  wallRun: {fileID: 0}
   speed: 0.2
   JumpForse: 4.6
 --- !u!114 &2710055985397169473
@@ -299,7 +298,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2707760201120264029}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 557da60828b706548b4db3fd969e12d4, type: 3}
   m_Name: 
@@ -339,7 +338,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2707760201120264029}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d522668ccd0e0814884b8262f0428acb, type: 3}
   m_Name: 
@@ -354,33 +353,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2707760201120264029}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca540dc875ada6149b53fed4b82d27b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerHP: {fileID: -6016210428057652090}
---- !u!114 &3098982330809078993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2707760201120264029}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9949fb470a0034349bcd70c28a6a9a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMovment: {fileID: 5707485274259336424}
-  wayVisualisation: {fileID: 0}
-  debugParent: {fileID: 0}
-  rb: {fileID: 8113830094378422181}
-  speed: 5
-  pointDistance: 2
-  maxPointsCount: 20
-  maxRayChekLenght: 1.5
-  distanceFromWall: 0.5
 --- !u!120 &1396537709182000263
 LineRenderer:
   serializedVersion: 2
