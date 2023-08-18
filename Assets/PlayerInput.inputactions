@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "TimeFreeze",
+                    "type": "Value",
+                    "id": "d889cd71-e2bc-4236-b738-fa6d3640e8b8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "9f45782d-faf1-4bd4-a34c-40619079c149",
@@ -331,6 +340,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "AnyKeyClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32032537-f3c2-418f-9d4a-eced6d6f6486",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "TimeFreeze",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

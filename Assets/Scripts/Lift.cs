@@ -30,10 +30,10 @@ public class Lift : MonoBehaviour
             marker.gameObject.SetActive(false);
             return;
         }
-        if(!InFieldOfView(mainHook)) return;
+        if (!InFieldOfView(mainHook)) return;
         marker.gameObject.SetActive(true);
         marker.position = Camera.main.WorldToScreenPoint(mainHook.position);
-        
+
     }
 
     private void FixedUpdate()
@@ -56,7 +56,9 @@ public class Lift : MonoBehaviour
     {
         if (!canLift) return;
         if (mainHook == null) return;
+        if (!InFieldOfView(mainHook)) return;
         Vector3 diraction = mainHook.position - transform.position;
+        rb.useGravity = true;
         rb.velocity = Vector3.zero;
         playerMovement.movementState = PlayerMovement.MovementStates.InAir;
         rb.AddForce(diraction * liftForce, ForceMode.VelocityChange);
@@ -74,7 +76,7 @@ public class Lift : MonoBehaviour
         while (time < recoverTime)
         {
             time += Time.deltaTime;
-            if(time < inAirLockTime) playerMovement.movementState = PlayerMovement.MovementStates.InAir;
+            if (time < inAirLockTime) playerMovement.movementState = PlayerMovement.MovementStates.InAir;
             lineRenderer.SetPosition(0, ropeStartPoint.position);
             yield return null;
         }

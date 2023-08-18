@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private Vector2 _inputVector;
-    private void Update()
+    private void FixedUpdate()
     {
         float magnitude = _inputVector.magnitude;
         bool inAir = movementState == MovementStates.InAir;
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Run();
         }
-        if ((magnitude == 0 || inAir) && IsGrounded())
+        if ((magnitude == 0) && IsGrounded())
         {   
             movementState = MovementStates.Stay;
         }
@@ -59,24 +59,19 @@ public class PlayerMovement : MonoBehaviour
     public void OnJump()
     {
         //if (!IsGrounded() && movementState != MovementStates.WallRun) return;
-        print($"jump {gameObject.name}");
         playerRb.velocity = new Vector3(playerRb.velocity.x, jumpForce, playerRb.velocity.z);
-        //movementState = MovementStates.InAir;
-
     }
 
     private void Run()
     {
         Vector3 direction = (_inputVector.x * playerRb.transform.right + _inputVector.y * playerRb.transform.forward) * speed * dashForce;       
         playerRb.velocity = new Vector3(direction.x, playerRb.velocity.y, direction.z);
-
-        //playerRb.AddForce(direction * speed, ForceMode.Force);
     }
 
     public bool IsGrounded()
     {
         float _distanceToTheGround = playerCollider.bounds.extents.y;
-        return Physics.Raycast(playerRb.position, Vector3.down, _distanceToTheGround + 0.1f);
+        return Physics.Raycast(playerRb.position, Vector3.down, _distanceToTheGround + 0.01f);
     }
 
     private void StateSwitcher(MovementStates state)

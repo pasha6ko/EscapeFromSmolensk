@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 1396537709182000263}
   - component: {fileID: 8620764533353062638}
   - component: {fileID: 3645478935181073985}
-  - component: {fileID: 3958597624039815675}
+  - component: {fileID: 7714717400560970386}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -128,7 +128,7 @@ Transform:
   m_Children:
   - {fileID: 5704536926024628076}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3298675049666311528
 MeshFilter:
@@ -334,6 +334,7 @@ MonoBehaviour:
   cam: {fileID: 5704536926024628076}
   playerMovement: {fileID: 5707485274259336424}
   rb: {fileID: 8113830094378422181}
+  timeFreeze: {fileID: 7714717400560970386}
   dashMaxCount: 3
   dashTime: 0.6
   dashRecoverTime: 1
@@ -393,7 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d522668ccd0e0814884b8262f0428acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 0}
   healthBar: {fileID: 0}
   death: {fileID: 8620764533353062638}
   maxHealth: 100
@@ -411,7 +411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDeath: {fileID: 8620764533353062638}
-  scoreCounter: {fileID: 0}
 --- !u!120 &1396537709182000263
 LineRenderer:
   serializedVersion: 2
@@ -552,7 +551,7 @@ MonoBehaviour:
   maxPointsCount: 20
   maxRayChekLenght: 1.5
   distanceFromWall: 0.5
---- !u!114 &3958597624039815675
+--- !u!114 &7714717400560970386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -561,10 +560,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2707760201120264029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df90ecd340210f4994b04bb5e453fe8, type: 3}
+  m_Script: {fileID: 11500000, guid: 62e45d33ab3700144b4968fd8b121012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: 1
+  smoothChangeTime: 0.2
+  minScale: 0.2
+  maxScale: 1
 --- !u!1 &7048112186465603848
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class Dash : MonoBehaviour
     [SerializeField] private Transform cam;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private TimeFreeze timeFreeze;
 
     [Header("Dash Settings")]
     [SerializeField] private int dashMaxCount;
@@ -23,14 +24,17 @@ public class Dash : MonoBehaviour
     {
         _dashCount = dashMaxCount;
     }
+
     public void FixedUpdate()
     {
         DeshRecover();
     }
+
     public void OnMove(InputValue input)
     {
         _inputVector = input.Get<Vector2>();
     }
+
     public void OnDash()
     {
         if (_dashCount <= 0) return;
@@ -40,8 +44,8 @@ public class Dash : MonoBehaviour
         StartCoroutine(DashProcess());
         _dashCount--;
         DeshRecover();
-
     }
+
     public void DeshRecover()
     {
         if (_dashRecoverProcess != null) return;
@@ -50,6 +54,7 @@ public class Dash : MonoBehaviour
         if (_dashCount >= dashMaxCount) return;
         _dashRecoverProcess = StartCoroutine(DeshRecoverAs());
     }
+
     private IEnumerator DashProcess()
     {
         float timer = 0;
@@ -60,7 +65,10 @@ public class Dash : MonoBehaviour
             playerMovement.SetDashForce(dashForceValue);
             yield return null;
         }
+        if (timeFreeze != null)
+            timeFreeze.ChangeTimeScale(TimeFreeze.TimeTypes.Normal);
     }
+
     private IEnumerator DeshRecoverAs()
     {
         while (_dashCount < dashMaxCount)
@@ -68,9 +76,14 @@ public class Dash : MonoBehaviour
             yield return new WaitForSeconds(dashRecoverTime);
             _dashCount++;
         }
-        _dashRecoverProcess = null;
+        _dashRecoverProcess = null; 
     }
 
-
-
+    public void OnTimeFreeze(InputValue value)
+    {      
+        if (timeFreeze == null) return;
+        float state = value.Get<float>();
+        if (state > 0.6f) timeFreeze.ChangeTimeScale(TimeFreeze.TimeTypes.Slow);
+        else timeFreeze.ChangeTimeScale(TimeFreeze.TimeTypes.Normal);
+    }
 }
