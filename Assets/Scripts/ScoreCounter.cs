@@ -26,7 +26,11 @@ public class ScoreCounter : MonoBehaviour
         scoreNow = score;
         ScoreUpdate();
     }
-
+    public void Damage(int value)
+    {
+        if (death.isDead) return;
+        scoreNow -= value;
+    }
     public void SmallDamage()
     {
         if (death.isDead) return;

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class DamageZone : RelativeZone
     [Header("Damage Settings")]
     [SerializeField] public DamagesTypes damageType;
 
-    private Action _action;
+    private OneValueOperations _action;
 
     public enum DamagesTypes
     {
@@ -19,24 +20,27 @@ public class DamageZone : RelativeZone
 
     protected override IEnumerator Act()
     {
+        int value = 0;
         switch (damageType)
         {
             case DamagesTypes.Small:
-                _action = playerHP.OnSmallDamage;
+                value = 10;
                 break;
 
             case DamagesTypes.Medium:
-                _action = playerHP.OnDamage;
+                value = 50;
+
                 break;
 
             case DamagesTypes.Large:
-                _action = playerHP.OnCriticalDamage;
+                value = 100;
+
                 break;
         }
 
         while (_isPlayerCollide && playerHP != null && _action != null)
         {
-            _action?.Invoke();
+            _action?.Invoke(value);
 
             yield return new WaitForSeconds(timeBetweenActes);
         }

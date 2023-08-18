@@ -5,7 +5,7 @@ using static UnityEngine.PlayerLoop.EarlyUpdate;
 
 public class PlayerHP : MonoBehaviour
 {
-    public Action OnSmallDamage;
+    public OneValueOperations OnSmallDamage;
     public Action OnDamage;
     public Action OnCriticalDamage;
     public Action OnHeal;
@@ -42,11 +42,11 @@ public class PlayerHP : MonoBehaviour
 
     public void SetActions()
     {
-        OnSmallDamage += SmallDamage;
+        /*OnSmallDamage += SmallDamage;
         OnSmallDamage += UpdateBar;
-        OnSmallDamage += Clamping;
-        OnSmallDamage += score.SmallDamage;
-        OnSmallDamage += score.ScoreUpdate;
+        OnSmallDamage += Clamping;*/
+        OnSmallDamage += score.Damage;
+        //OnSmallDamage += score.ScoreUpdate;
 
         OnDamage += Damage;
         OnDamage += UpdateBar;
@@ -112,3 +112,4 @@ public class PlayerHP : MonoBehaviour
         healthBar.value = _health;
     }
 }
+public delegate void OneValueOperations(int x);
