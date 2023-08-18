@@ -11,7 +11,7 @@ public class PickAbleHeal : MonoBehaviour
 
         _playerHP = other.GetComponent<PlayerHP>();    
 
-        _playerHP.OnHeal?.Invoke();
+        _playerHP.OnHeal?.Invoke(2);
         Destroy(gameObject);
     }
 }

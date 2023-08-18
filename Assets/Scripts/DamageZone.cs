@@ -8,8 +8,6 @@ public class DamageZone : RelativeZone
     [Header("Damage Settings")]
     [SerializeField] public DamagesTypes damageType;
 
-    private OneValueOperations _action;
-
     public enum DamagesTypes
     {
         NoDamage,
@@ -28,19 +26,19 @@ public class DamageZone : RelativeZone
                 break;
 
             case DamagesTypes.Medium:
-                value = 50;
+                value = 4;
 
                 break;
 
             case DamagesTypes.Large:
-                value = 100;
+                value = 2;
 
                 break;
         }
 
-        while (_isPlayerCollide && playerHP != null && _action != null)
+        while (_isPlayerCollide && playerHP != null)
         {
-            _action?.Invoke(value);
+            playerHP.OnDamage?.Invoke(value);
 
             yield return new WaitForSeconds(timeBetweenActes);
         }

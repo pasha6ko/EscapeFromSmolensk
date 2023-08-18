@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenActes: 0.8
-  damageType: 3
+  damageType: 1
 --- !u!1 &537234797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +1791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 758109367}
+  - component: {fileID: 758109368}
   m_Layer: 0
   m_Name: ---Score---
   m_TagString: Untagged
@@ -1813,6 +1814,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &758109368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758109366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e9903ead6efcf499bb9bc5df1ca20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: {fileID: 1745706793}
+  death: {fileID: 1745706785}
+  startScore: 300
+  textScore: {fileID: 875753613}
 --- !u!1 &875753611
 GameObject:
   m_ObjectHideFlags: 0
@@ -3353,6 +3370,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad246eca8e6bc694eb88e9913c8b093d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1745706793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -6016210428057652090, guid: 94171608cbc12dd49bb08b6d307d84e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2042411662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d522668ccd0e0814884b8262f0428acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1766471957
 GameObject:
   m_ObjectHideFlags: 0
@@ -3572,7 +3601,7 @@ PrefabInstance:
         type: 3}
       propertyPath: score
       value: 
-      objectReference: {fileID: 2042411663}
+      objectReference: {fileID: 758109368}
     - target: {fileID: -6016210428057652090, guid: 94171608cbc12dd49bb08b6d307d84e9,
         type: 3}
       propertyPath: _health
@@ -3587,7 +3616,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreCounter
       value: 
-      objectReference: {fileID: 2042411663}
+      objectReference: {fileID: 758109368}
     - target: {fileID: 2302551255365041120, guid: 94171608cbc12dd49bb08b6d307d84e9,
         type: 3}
       propertyPath: cameraShake
@@ -3693,18 +3722,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94171608cbc12dd49bb08b6d307d84e9, type: 3}
---- !u!114 &2042411663 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3611106850615817477, guid: 94171608cbc12dd49bb08b6d307d84e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 2042411662}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e9903ead6efcf499bb9bc5df1ca20f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2107455378
 GameObject:
   m_ObjectHideFlags: 0

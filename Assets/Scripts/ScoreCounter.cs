@@ -3,16 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreCounter : MonoBehaviour
 {
-    [HideInInspector] public int scoreNow;
+    public static ScoreCounter Instance;
+    [HideInInspector] private int scoreNow;
 
     [Header("Player Components")]
-    [SerializeField] private Death death;
+    [SerializeField] public PlayerHP playerHP;
+    [SerializeField] public Death death;
     [Header("Score Settings")]
     [SerializeField] private int startScore;
     [SerializeField] private TextMeshProUGUI textScore;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -20,44 +35,26 @@ public class ScoreCounter : MonoBehaviour
         ScoreUpdate();
     }
 
-    public void Revival(int score)
-    {
-        startScore = score;
-        scoreNow = score;
-        ScoreUpdate();
-    }
     public void Damage(int value)
     {
+        if (playerHP.isArmored) return;
         if (death.isDead) return;
-        scoreNow -= value;
-    }
-    public void SmallDamage()
-    {
-        if (death.isDead) return;
-        scoreNow -= 10;
-    }
+        scoreNow -= Mathf.FloorToInt(100 / value);
 
-    public void MediumDamage()
-    {
-        if (death.isDead) return;
-        scoreNow -= 40;
-    }
-
-    public void LargeDamage()
-    {
-        if (death.isDead) return;
-        scoreNow -= 100;
-    }
-
-    public void DeathDamage()
-    {
-        if (death.isDead) return;
-        scoreNow -= 60;
+        ScoreUpdate();
     }
 
     public void ScoreUpdate()
     {
         scoreNow = Math.Clamp(scoreNow, 0, startScore);
         textScore.text = $"{scoreNow}";
+
+        if (scoreNow > 0) return;
+        RestartLevel();
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

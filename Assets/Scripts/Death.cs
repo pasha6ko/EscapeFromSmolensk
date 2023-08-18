@@ -37,6 +37,7 @@ public class Death : MonoBehaviour
 
     private IEnumerator Recovery()
     {
+        ScoreCounter.Instance.Damage(2);
         deathVideo.SetActive(true);
         deathUI.SetActive(true);
         isDead = true;

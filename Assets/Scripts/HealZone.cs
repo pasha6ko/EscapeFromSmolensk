@@ -7,7 +7,7 @@ public class HealZone : RelativeZone
     {
         while (_isPlayerCollide)
         {
-            playerHP.OnHeal?.Invoke();
+            playerHP.OnHeal?.Invoke(50);
 
             yield return new WaitForSeconds(timeBetweenActes);
         }
