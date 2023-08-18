@@ -10,10 +10,10 @@ public class DamageZone : RelativeZone
 
     public enum DamagesTypes
     {
-        NoDamage,
         Small,
         Medium,
-        Large
+        Large,
+        Critical
     }
 
     protected override IEnumerator Act()
@@ -27,12 +27,14 @@ public class DamageZone : RelativeZone
 
             case DamagesTypes.Medium:
                 value = 4;
-
                 break;
 
             case DamagesTypes.Large:
                 value = 2;
-
+                break;
+            case DamagesTypes.Critical:
+                ScoreCounter.Instance.RestartLevel();
+                value = 1;
                 break;
         }
 

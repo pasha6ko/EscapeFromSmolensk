@@ -53,7 +53,7 @@ public class ScoreCounter : MonoBehaviour
         RestartLevel();
     }
 
-    private void RestartLevel()
+    public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
