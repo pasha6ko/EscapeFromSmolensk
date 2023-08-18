@@ -14,7 +14,7 @@ public class Death : MonoBehaviour
     [SerializeField] private GameObject deathVideo;
     [SerializeField] private GameObject deathUI;
 
-    private bool isDead = false;
+    [HideInInspector] public bool isDead = false;
 
     public void StartDeath()
     {

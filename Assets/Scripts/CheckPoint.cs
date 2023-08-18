@@ -5,6 +5,7 @@ public class CheckPoint : MonoBehaviour
 {
     [Header("Player Components")]
     [SerializeField] private Death playerDeath;
+    [SerializeField] private ScoreCounter scoreCounter;
     
     private GameObject playerPref;
     private Vector3 point;
@@ -25,7 +26,12 @@ public class CheckPoint : MonoBehaviour
         playerPref.transform.position = point;
 
         CheckPoint cloneChekPoint = playerPref.GetComponent<CheckPoint>();
+        ScoreCounter newScoreCounter = playerPref.GetComponent<ScoreCounter>();
+
         cloneChekPoint.AddLastCheckPoint(point);
+
+        scoreCounter.DeathDamage();
+        newScoreCounter.Revival(scoreCounter.scoreNow);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.PlayerLoop.EarlyUpdate;
 
 public class PlayerHP : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class PlayerHP : MonoBehaviour
     public Action OnCriticalDamage;
     public Action OnHeal;
 
+    [Header("Player Components")]
+    [SerializeField] private ScoreCounter score;
     [Header("HP Components")]
     [SerializeField] private Slider healthBar;
     [SerializeField] private Death death;
     [Header("HP Settings")]
     [SerializeField, Range(50, 250)] private float maxHealth;
-    [SerializeField] public bool isArmored = false;
+    [SerializeField][HideInInspector] public bool isArmored = false;
 
     private float _health;
 
@@ -42,14 +45,20 @@ public class PlayerHP : MonoBehaviour
         OnSmallDamage += SmallDamage;
         OnSmallDamage += UpdateBar;
         OnSmallDamage += Clamping;
+        OnSmallDamage += score.SmallDamage;
+        OnSmallDamage += score.ScoreUpdate;
 
         OnDamage += Damage;
         OnDamage += UpdateBar;
         OnDamage += Clamping;
+        OnDamage += score.MediumDamage;
+        OnDamage += score.ScoreUpdate;
 
         OnCriticalDamage += CriticalDamage;
         OnCriticalDamage += UpdateBar;
         OnCriticalDamage += Clamping;
+        OnCriticalDamage += score.LargeDamage;
+        OnCriticalDamage += score.ScoreUpdate;
 
         OnHeal += Healing;
         OnHeal += UpdateBar;
