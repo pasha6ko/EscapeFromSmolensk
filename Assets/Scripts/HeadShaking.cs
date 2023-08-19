@@ -16,7 +16,7 @@ public class HeadShaking : MonoBehaviour
 
     private void Start()
     {
-        _jointOriginalPos = new Vector3(jointCamera.position.x, 0.83f, jointCamera.position.z);
+        _jointOriginalPos = new Vector3(jointCamera.localPosition.x, 0.83f, jointCamera.localPosition.z);
         _bobAmount *= shakingForce;
     }
 
