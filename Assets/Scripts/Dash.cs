@@ -25,7 +25,7 @@ public class Dash : MonoBehaviour
         _dashCount = dashMaxCount;
     }
 
-    public void FixedUpdate()
+    private void FixedUpdate()
     {
         DeshRecover();
     }
@@ -69,6 +69,14 @@ public class Dash : MonoBehaviour
             timeFreeze.ChangeTimeScale(TimeFreeze.TimeTypes.Normal);
     }
 
+    public void OnTimeFreeze(InputValue value)
+    {
+        if (timeFreeze == null) return;
+        float state = value.Get<float>();
+        if (state > 0.6f) timeFreeze.ChangeTimeScale(TimeFreeze.TimeTypes.Slow);
+        else timeFreeze.ChangeTimeScale(TimeFreeze.TimeTypes.Normal);
+    }
+
     private IEnumerator DeshRecoverAs()
     {
         while (_dashCount < dashMaxCount)
@@ -76,14 +84,6 @@ public class Dash : MonoBehaviour
             yield return new WaitForSeconds(dashRecoverTime);
             _dashCount++;
         }
-        _dashRecoverProcess = null; 
-    }
-
-    public void OnTimeFreeze(InputValue value)
-    {      
-        if (timeFreeze == null) return;
-        float state = value.Get<float>();
-        if (state > 0.6f) timeFreeze.ChangeTimeScale(TimeFreeze.TimeTypes.Slow);
-        else timeFreeze.ChangeTimeScale(TimeFreeze.TimeTypes.Normal);
+        _dashRecoverProcess = null;
     }
 }

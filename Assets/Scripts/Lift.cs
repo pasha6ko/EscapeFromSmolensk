@@ -20,7 +20,7 @@ public class Lift : MonoBehaviour
     [SerializeField, Range(0f, 10f)] private float liftForce;
     [SerializeField, Range(0f, 10f)] private float recoverTime;
     [SerializeField] private float inAirLockTime;
-    private bool canLift = true;
+    private bool _canLift = true;
 
     private void Update()
     {
@@ -54,7 +54,7 @@ public class Lift : MonoBehaviour
 
     public void OnLift()
     {
-        if (!canLift) return;
+        if (!_canLift) return;
         if (mainHook == null) return;
         if (!InFieldOfView(mainHook)) return;
         Vector3 diraction = mainHook.position - transform.position;
@@ -62,7 +62,7 @@ public class Lift : MonoBehaviour
         rb.velocity = Vector3.zero;
         playerMovement.movementState = PlayerMovement.MovementStates.InAir;
         rb.AddForce(diraction * liftForce, ForceMode.VelocityChange);
-        canLift = false;
+        _canLift = false;
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, ropeStartPoint.position);
         lineRenderer.SetPosition(1, mainHook.position);
@@ -80,10 +80,11 @@ public class Lift : MonoBehaviour
             lineRenderer.SetPosition(0, ropeStartPoint.position);
             yield return null;
         }
-        canLift = true;
+        _canLift = true;
         lineRenderer.enabled = false;
     }
-    bool InFieldOfView(Transform point)
+
+    private bool InFieldOfView(Transform point)
     {
         Vector3 direction = point.transform.position - cam.transform.position;
 

@@ -3,8 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerLook : MonoBehaviour
 {
+    [Header("Player Components")]
     [SerializeField] private Transform cam;
     [SerializeField] private Transform player;
+    [Header("Camera Settings")]
     [SerializeField] private float rotationSensivity;
     private Vector2 _inputVector;
 
@@ -12,6 +14,7 @@ public class PlayerLook : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
+
     private void Update()
     {
         float eulerX = (-_inputVector.y * rotationSensivity) % 360;
@@ -23,6 +26,7 @@ public class PlayerLook : MonoBehaviour
         cam.localRotation = Quaternion.Euler(targetXRotation);
         _inputVector = Vector2.zero;
     }
+
     public void OnLook(InputValue input)
     {
         _inputVector = input.Get<Vector2>();

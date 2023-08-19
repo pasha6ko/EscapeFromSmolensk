@@ -13,8 +13,18 @@ public class Death : MonoBehaviour
     [Header("Death Components")]
     [SerializeField] private GameObject deathVideo;
     [SerializeField] private GameObject deathUI;
-
     [HideInInspector] public bool isDead = false;
+
+    private IEnumerator Recovery()
+    {
+        ScoreCounter.Instance.Damage(2);
+        deathVideo.SetActive(true);
+        deathUI.SetActive(true);
+        isDead = true;
+        yield return new WaitForSeconds(10f);
+        OnAnyKeyClick();
+
+    }
 
     public void StartDeath()
     {
@@ -33,16 +43,5 @@ public class Death : MonoBehaviour
 
         StopCoroutine(Recovery());
         Destroy(gameObject);
-    }
-
-    private IEnumerator Recovery()
-    {
-        ScoreCounter.Instance.Damage(2);
-        deathVideo.SetActive(true);
-        deathUI.SetActive(true);
-        isDead = true;
-        yield return new WaitForSeconds(10f);
-        OnAnyKeyClick();
-
     }
 }

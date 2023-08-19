@@ -1,34 +1,19 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
     [Header("Player Components")]
     [SerializeField] private Death playerDeath;
-    
-    private GameObject playerPref;
-    private Vector3 point;
+
+    private GameObject _playerPref;
+    private Vector3 _point;
 
     private void Start()
     {
         playerDeath.OnDeath += SetPosition;
 
-        playerPref = Instantiate(gameObject);
-        playerPref.SetActive(false);
-    }
-
-    public void SetPosition()
-    {
-        if (point == null) return;
-
-        playerPref.SetActive(true);
-        playerPref.transform.position = point;
-
-        CheckPoint cloneChekPoint = playerPref.GetComponent<CheckPoint>();
-
-        cloneChekPoint.AddLastCheckPoint(point);
-        ScoreCounter.Instance.death = playerPref.GetComponent<Death>();
-        ScoreCounter.Instance.playerHP = playerPref.GetComponent<PlayerHP>();
+        _playerPref = Instantiate(gameObject);
+        _playerPref.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,8 +28,23 @@ public class CheckPoint : MonoBehaviour
 
         AddLastCheckPoint(checkpointPosition);
     }
+
+    public void SetPosition()
+    {
+        if (_point == null) return;
+
+        _playerPref.SetActive(true);
+        _playerPref.transform.position = _point;
+
+        CheckPoint cloneChekPoint = _playerPref.GetComponent<CheckPoint>();
+
+        cloneChekPoint.AddLastCheckPoint(_point);
+        ScoreCounter.Instance.death = _playerPref.GetComponent<Death>();
+        ScoreCounter.Instance.playerHP = _playerPref.GetComponent<PlayerHP>();
+    }
+
     public void AddLastCheckPoint(Vector3 position)
     {
-        point = position;
+        _point = position;
     }
 }

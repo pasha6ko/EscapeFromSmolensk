@@ -23,10 +23,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(0f, 10f)] private float speed;
     [SerializeField, Range(0f, 20f)] private float jumpForce;
     [SerializeField] private bool invertedInput;
-    private float dashForce = 1f;
 
-
+    private float _dashForce = 1f;
     private Vector2 _inputVector;
+
     private void FixedUpdate()
     {
         float magnitude = _inputVector.magnitude;
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
             Run();
         }
         if ((magnitude == 0) && IsGrounded())
-        {   
+        {
             movementState = MovementStates.Stay;
         }
         else if (magnitude > 0 && IsGrounded())
@@ -45,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
             movementState = MovementStates.Run;
         }
     }
-    public void SetDashForce(float value) => dashForce = value + 1;
+
+    public void SetDashForce(float value) => _dashForce = value + 1;
     public void OnMove(InputValue input)
     {
         _inputVector = input.Get<Vector2>() * (invertedInput ? -1 : 1);
@@ -58,13 +59,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump()
     {
-        //if (!IsGrounded() && movementState != MovementStates.WallRun) return;
+        if (!IsGrounded() && movementState != MovementStates.WallRun) return;
         playerRb.velocity = new Vector3(playerRb.velocity.x, jumpForce, playerRb.velocity.z);
     }
 
     private void Run()
     {
-        Vector3 direction = (_inputVector.x * playerRb.transform.right + _inputVector.y * playerRb.transform.forward) * speed * dashForce;       
+        Vector3 direction = (_inputVector.x * playerRb.transform.right + _inputVector.y * playerRb.transform.forward) * speed * _dashForce;
         playerRb.velocity = new Vector3(direction.x, playerRb.velocity.y, direction.z);
     }
 
@@ -72,10 +73,5 @@ public class PlayerMovement : MonoBehaviour
     {
         float _distanceToTheGround = playerCollider.bounds.extents.y;
         return Physics.Raycast(playerRb.position, Vector3.down, _distanceToTheGround + 0.01f);
-    }
-
-    private void StateSwitcher(MovementStates state)
-    {
-        movementState = state;
     }
 }

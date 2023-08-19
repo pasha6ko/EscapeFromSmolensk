@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.PlayerLoop.EarlyUpdate;
 
 public class PlayerHP : MonoBehaviour
 {
@@ -76,4 +75,5 @@ public class PlayerHP : MonoBehaviour
         healthBar.value = _health;
     }
 }
+
 public delegate void OneValueOperations(int value);

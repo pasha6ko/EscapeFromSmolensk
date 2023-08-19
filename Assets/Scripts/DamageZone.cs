@@ -1,14 +1,12 @@
-using JetBrains.Annotations;
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class DamageZone : RelativeZone
 {
     [Header("Damage Settings")]
-    [SerializeField] public DamagesTypes damageType;
+    [SerializeField] private DamagesTypes damageType;
 
-    public enum DamagesTypes
+    private enum DamagesTypes
     {
         Small,
         Medium,
@@ -24,11 +22,9 @@ public class DamageZone : RelativeZone
             case DamagesTypes.Small:
                 value = 10;
                 break;
-
             case DamagesTypes.Medium:
                 value = 4;
                 break;
-
             case DamagesTypes.Large:
                 value = 2;
                 break;
