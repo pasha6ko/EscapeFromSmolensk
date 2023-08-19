@@ -55,7 +55,6 @@ public class WallRun : MonoBehaviour
 
     public void StartWallRun()
     {
-        print("StartWallRun");
         rb.useGravity = false;
         playerMovment.movementState = PlayerMovement.MovementStates.WallRun;
     }
