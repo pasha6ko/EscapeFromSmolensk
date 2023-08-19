@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private float _dashForce = 1f;
     private Vector2 _inputVector;
 
-    private void FixedUpdate()
+    private void Update()
     {
         float magnitude = _inputVector.magnitude;
         bool inAir = movementState == MovementStates.InAir;

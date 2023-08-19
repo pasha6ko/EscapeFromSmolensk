@@ -12,6 +12,8 @@
 
 #IgnorPakages
 /Assets/Dark City 2/*
+/Assets/Packages/*
+/Assets/Aura 2/*
 #IgnorMeta
 
 #Videos

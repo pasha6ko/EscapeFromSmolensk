@@ -59,13 +59,13 @@ public class Lift : MonoBehaviour
         if (!InFieldOfView(mainHook)) return;
         Vector3 diraction = mainHook.position - transform.position;
         rb.useGravity = true;
-        rb.velocity = Vector3.zero;
+        rb.velocity = Vector3.up;
         playerMovement.movementState = PlayerMovement.MovementStates.InAir;
-        rb.AddForce(diraction * liftForce, ForceMode.VelocityChange);
         _canLift = false;
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, ropeStartPoint.position);
         lineRenderer.SetPosition(1, mainHook.position);
+        rb.AddForce(diraction * liftForce, ForceMode.VelocityChange);
         StartCoroutine(LiftRecovery());
 
     }

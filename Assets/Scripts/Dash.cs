@@ -50,7 +50,9 @@ public class Dash : MonoBehaviour
     {
         if (_dashRecoverProcess != null) return;
         if (playerMovement == null) return;
-        if (!playerMovement.IsGrounded()) return;
+        if (playerMovement.movementState != PlayerMovement.MovementStates.Stay &&
+            playerMovement.movementState != PlayerMovement.MovementStates.Run &&
+            playerMovement.movementState != PlayerMovement.MovementStates.WallRun) return;
         if (_dashCount >= dashMaxCount) return;
         _dashRecoverProcess = StartCoroutine(DeshRecoverAs());
     }
