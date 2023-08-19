@@ -1,21 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class BlindZone : MonoBehaviour
 {
+    [Header("Blind Settings")]
     [SerializeField, Range(10f, 150f)] private float targetFov;
-    [SerializeField] private Volume post;
+    [Header("Blind Components")]
+    [SerializeField] private Volume postProcessing;
+
     private Vignette _vignette;
 
     private void Start()
     {
-        post.profile.TryGet(out _vignette);
+        postProcessing.profile.TryGet(out _vignette);
         _vignette.active = false;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.transform.CompareTag("Player")) return;
