@@ -3602,6 +3602,26 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 285884700}
+    - target: {fileID: 1616918773418214153, guid: 94171608cbc12dd49bb08b6d307d84e9,
+        type: 3}
+      propertyPath: _bobForce
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616918773418214153, guid: 94171608cbc12dd49bb08b6d307d84e9,
+        type: 3}
+      propertyPath: _bobSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616918773418214153, guid: 94171608cbc12dd49bb08b6d307d84e9,
+        type: 3}
+      propertyPath: _timerForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616918773418214153, guid: 94171608cbc12dd49bb08b6d307d84e9,
+        type: 3}
+      propertyPath: shakingForce
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 2707760201120264029, guid: 94171608cbc12dd49bb08b6d307d84e9,
         type: 3}
       propertyPath: m_Name

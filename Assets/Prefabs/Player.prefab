@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 8620764533353062638}
   - component: {fileID: 3645478935181073985}
   - component: {fileID: 7714717400560970386}
+  - component: {fileID: 3161893706722405240}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -128,7 +129,7 @@ Transform:
   m_Children:
   - {fileID: 5704536926024628076}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3298675049666311528
 MeshFilter:
@@ -566,6 +567,23 @@ MonoBehaviour:
   smoothChangeTime: 0.2
   minScale: 0.2
   maxScale: 1
+--- !u!114 &3161893706722405240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707760201120264029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add3845d360a7f3479edd8b8d221e441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}
+  jointCamera: {fileID: 0}
+  timerForce: 2
+  shakingSpeed: 15
+  shakingForce: 0.08
 --- !u!1 &7048112186465603848
 GameObject:
   m_ObjectHideFlags: 0

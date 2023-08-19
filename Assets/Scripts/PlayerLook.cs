@@ -31,5 +31,4 @@ public class PlayerLook : MonoBehaviour
     {
         _inputVector = input.Get<Vector2>();
     }
-
 }
