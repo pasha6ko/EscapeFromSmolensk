@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,14 +6,16 @@ using UnityEngine.SceneManagement;
 public class ScoreCounter : MonoBehaviour
 {
     public static ScoreCounter Instance;
-    [HideInInspector] private int scoreNow;
 
     [Header("Player Components")]
     [SerializeField] public PlayerHP playerHP;
     [SerializeField] public Death death;
+
     [Header("Score Settings")]
     [SerializeField] private int startScore;
     [SerializeField] private TextMeshProUGUI textScore;
+
+    private int _scoreNow;
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class ScoreCounter : MonoBehaviour
 
     private void Start()
     {
-        scoreNow = startScore;
+        _scoreNow = startScore;
         ScoreUpdate();
     }
 
@@ -39,17 +39,17 @@ public class ScoreCounter : MonoBehaviour
     {
         if (playerHP.isArmored) return;
         if (death.isDead) return;
-        scoreNow -= Mathf.FloorToInt(100 / value);
+        _scoreNow -= Mathf.FloorToInt(100 / value);
 
         ScoreUpdate();
     }
 
     public void ScoreUpdate()
     {
-        scoreNow = Math.Clamp(scoreNow, 0, startScore);
-        textScore.text = $"{scoreNow}";
+        _scoreNow = Math.Clamp(_scoreNow, 0, startScore);
+        textScore.text = $"{_scoreNow}";
 
-        if (scoreNow > 0) return;
+        if (_scoreNow > 0) return;
         RestartLevel();
     }
 
