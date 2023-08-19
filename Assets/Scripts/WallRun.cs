@@ -63,7 +63,7 @@ public class WallRun : MonoBehaviour
     {
         if (playerMovment == null) return;
         rb.useGravity = true;
-        playerMovment.movementState = PlayerMovement.MovementStates.Run;
+        playerMovment.movementState = PlayerMovement.MovementStates.InAirRun;
         playerMovment.OnJump();
         ClearWay();
     }

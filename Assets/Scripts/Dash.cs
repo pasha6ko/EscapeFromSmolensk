@@ -40,7 +40,7 @@ public class Dash : MonoBehaviour
         if (_dashCount <= 0) return;
         StartCoroutine(DashProcess());
         if (_inputVector == Vector2.zero) _inputVector = Vector2.up;
-        if (playerMovement != null) playerMovement.movementState = PlayerMovement.MovementStates.Run;
+        if (playerMovement != null) playerMovement.movementState = PlayerMovement.MovementStates.InAirRun;
         StartCoroutine(DashProcess());
         _dashCount--;
         DeshRecover();

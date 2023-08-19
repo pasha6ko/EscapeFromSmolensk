@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour
         Stay,
         Run,
         WallRun,
-        InAir
+        InAir,
+        InAirRun
     }
 
     [Header("State")]
@@ -44,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
         {
             movementState = MovementStates.Run;
         }
+        else if (magnitude > 0 && !IsGrounded() && !inAir)
+        {
+            movementState = MovementStates.InAirRun;
+        }
     }
 
     public void SetDashForce(float value) => _dashForce = value + 1;
@@ -61,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!IsGrounded() && movementState != MovementStates.WallRun) return;
         playerRb.velocity = new Vector3(playerRb.velocity.x, jumpForce, playerRb.velocity.z);
+        movementState = MovementStates.InAirRun;
     }
 
     private void Run()
