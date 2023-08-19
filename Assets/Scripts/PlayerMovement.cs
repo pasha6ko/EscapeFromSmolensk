@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Run();
         }
-        if ((magnitude == 0) && IsGrounded())
+        if ((magnitude == 0) && IsGrounded() && !inAir)
         {
             movementState = MovementStates.Stay;
         }
