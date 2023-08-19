@@ -74,4 +74,6 @@ public class PlayerMovement : MonoBehaviour
         float _distanceToTheGround = playerCollider.bounds.extents.y;
         return Physics.Raycast(playerRb.position, Vector3.down, _distanceToTheGround + 0.01f);
     }
+
+    public void SetInveseInput(bool value) => invertedInput = value;
 }
