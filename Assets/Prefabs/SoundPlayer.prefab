@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3037527012892119765
+--- !u!1 &197434348995841648
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 353337916561092325}
-  - component: {fileID: 1960934630947166587}
-  - component: {fileID: 4689116661632713092}
+  - component: {fileID: 2995315875610598227}
+  - component: {fileID: 432060623621414505}
+  - component: {fileID: 4377980511500508072}
   m_Layer: 0
-  m_Name: MusicPlayer
+  m_Name: SoundPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &353337916561092325
+--- !u!4 &2995315875610598227
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3037527012892119765}
+  m_GameObject: {fileID: 197434348995841648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3888255, y: -0.0147268195, z: -9.393128}
+  m_LocalPosition: {x: -5.46919, y: 1.0179954, z: 12.832675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1960934630947166587
+--- !u!82 &432060623621414505
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3037527012892119765}
+  m_GameObject: {fileID: 197434348995841648}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -47,7 +47,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -89,7 +89,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -129,22 +129,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4689116661632713092
+--- !u!114 &4377980511500508072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3037527012892119765}
+  m_GameObject: {fileID: 197434348995841648}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b1e757436880fa458ce5a2da7010a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClipList:
-  - {fileID: 8300000, guid: b48b115bd3e61c7478d33a74b2e2ddca, type: 3}
-  - {fileID: 8300000, guid: a0c3c4fe2a7e5af4a97d6d650c04fd77, type: 3}
-  - {fileID: 8300000, guid: 9b5cfc72b64d9ab4d835d1e182848d17, type: 3}
-  - {fileID: 8300000, guid: 747e938efc31f784ba987b55e9930fcb, type: 3}
-  - {fileID: 8300000, guid: 80fdbb6c6dd6973499d1a932ffc8baaa, type: 3}
-  - {fileID: 8300000, guid: c3e743e8a82003a4699be74636b81709, type: 3}
+  audioClipList: []

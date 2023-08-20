@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicChooser : MonoBehaviour
+public class SoundPlayer : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> audioClipList;
     private AudioSource audioSource;
