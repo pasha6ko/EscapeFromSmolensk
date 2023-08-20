@@ -795,7 +795,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: AURA_IN_PROJECT
+    Standalone: AURA_IN_PROJECT;OCCASOFTWARE;BUTO
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

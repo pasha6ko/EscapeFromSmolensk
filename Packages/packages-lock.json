@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.occasoftware.buto": {
+      "version": "file:com.occasoftware.buto",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.render-pipelines.universal": "12.1.6"
+      }
+    },
     "com.unity.burst": {
       "version": "1.8.4",
       "depth": 1,
