@@ -2238,6 +2238,16 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 1745706795}
+    - target: {fileID: 6265510210176287245, guid: 94171608cbc12dd49bb08b6d307d84e9,
+        type: 3}
+      propertyPath: dashTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265510210176287245, guid: 94171608cbc12dd49bb08b6d307d84e9,
+        type: 3}
+      propertyPath: dashForce
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8455172156706307637, guid: 94171608cbc12dd49bb08b6d307d84e9,
         type: 3}
       propertyPath: m_RootOrder
