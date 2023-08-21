@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 3645478935181073985}
   - component: {fileID: 7714717400560970386}
   - component: {fileID: 3161893706722405240}
+  - component: {fileID: 2710262289675340858}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -129,7 +130,7 @@ Transform:
   m_Children:
   - {fileID: 5704536926024628076}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3298675049666311528
 MeshFilter:
@@ -337,9 +338,9 @@ MonoBehaviour:
   rb: {fileID: 8113830094378422181}
   timeFreeze: {fileID: 7714717400560970386}
   dashMaxCount: 3
-  dashTime: 0.6
+  dashTime: 0.3
   dashRecoverTime: 1
-  dashForce: 1
+  dashForce: 3
   dashCurve:
     serializedVersion: 2
     m_Curve:
@@ -579,11 +580,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add3845d360a7f3479edd8b8d221e441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 0}
-  jointCamera: {fileID: 0}
+  playerMovement: {fileID: 5707485274259336424}
+  jointCamera: {fileID: 5704536926024628076}
   timerForce: 2
   shakingSpeed: 15
   shakingForce: 0.08
+--- !u!114 &2710262289675340858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707760201120264029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01f5df6d7d74e746a75aafdf38e472a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 9152612289298193985}
+  pause: {fileID: 0}
 --- !u!1 &7048112186465603848
 GameObject:
   m_ObjectHideFlags: 0
