@@ -656,6 +656,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e885cb875218e847adc3a34ba1149be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  player: {fileID: 0}
+  rotationSensivity: 0
 --- !u!54 &1203772985
 Rigidbody:
   m_ObjectHideFlags: 0

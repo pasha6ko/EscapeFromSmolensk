@@ -18,10 +18,10 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.12
+    m_Value: 0.14
   intensity:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -372,8 +372,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   maxDistanceVolumetric:
-    m_OverrideState: 0
-    m_Value: 64
+    m_OverrideState: 1
+    m_Value: 73.04
   analyticFogEnabled:
     m_OverrideState: 1
     m_Value: 1
@@ -397,7 +397,7 @@ MonoBehaviour:
     m_Value: 1
   fogDensity:
     m_OverrideState: 1
-    m_Value: 5.46
+    m_Value: 3.5
   anisotropy:
     m_OverrideState: 1
     m_Value: -0.37
@@ -457,7 +457,7 @@ MonoBehaviour:
     m_Value: 0.3
   noiseTiling:
     m_OverrideState: 1
-    m_Value: 103.12
+    m_Value: 102.38
   noiseWindSpeed:
     m_OverrideState: 0
     m_Value: {x: 0, y: -1, z: 0}

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Dash : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Dash : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private TimeFreeze timeFreeze;
+    [SerializeField] private Image dashBar;
 
     [Header("Dash Settings")]
     [SerializeField] private int dashMaxCount;
@@ -22,7 +24,7 @@ public class Dash : MonoBehaviour
 
     private void Start()
     {
-        _dashCount = dashMaxCount;
+        ResetDash();
     }
 
     private void FixedUpdate()
@@ -43,6 +45,7 @@ public class Dash : MonoBehaviour
         if (playerMovement != null) playerMovement.movementState = PlayerMovement.MovementStates.InAirRun;
         StartCoroutine(DashProcess());
         _dashCount--;
+        UIUpdate();
         DeshRecover();
     }
 
@@ -54,7 +57,20 @@ public class Dash : MonoBehaviour
             playerMovement.movementState != PlayerMovement.MovementStates.Run &&
             playerMovement.movementState != PlayerMovement.MovementStates.WallRun) return;
         if (_dashCount >= dashMaxCount) return;
-        _dashRecoverProcess = StartCoroutine(DeshRecoverAs());
+        if (playerMovement.movementState == PlayerMovement.MovementStates.InAir || playerMovement.movementState == PlayerMovement.MovementStates.InAirRun) return;
+        ResetDash();
+    }
+
+    private void ResetDash()
+    {
+        _dashCount = dashMaxCount;
+        UIUpdate();
+    }
+
+    private void UIUpdate()
+    {
+        if (dashBar == null) return;
+        dashBar.fillAmount = (float)_dashCount / (float)dashMaxCount;
     }
 
     private IEnumerator DashProcess()
