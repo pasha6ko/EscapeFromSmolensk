@@ -408,3 +408,9 @@ Assets/TextMesh Pro/Sprites/EmojiOne.json
 Assets/TextMesh Pro/Sprites/EmojiOne.json.meta
 Assets/TextMesh Pro/Sprites/EmojiOne.png
 Assets/TextMesh Pro/Sprites/EmojiOne.png.meta
+Assets/Settings/URP-Balanced-Renderer.asset
+Assets/Settings/URP-Balanced.asset
+Assets/Settings/URP-HighFidelity-Renderer.asset
+Assets/Settings/URP-HighFidelity.asset
+Assets/Settings/URP-Performant.asset
+ProjectSettings/GraphicsSettings.asset
