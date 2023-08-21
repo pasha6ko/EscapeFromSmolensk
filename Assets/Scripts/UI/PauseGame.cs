@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PauseGame : MonoBehaviour
 {
     [Header("Player Components")]
-    [SerializeField] private PlayerInput input;
+    [SerializeField] private PlayerMovement playerMovement;
     [Header("UI Components")]
     [SerializeField] private GameObject pause;
     [SerializeField] private Button continueButton;
@@ -22,14 +22,14 @@ public class PauseGame : MonoBehaviour
 
     public void OnPause()
     {
-        input.enabled = false;
+        playerMovement.enabled = false;
         pause.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void Continue()
     {
-        input.enabled = true;
+        playerMovement.enabled = true;
         pause.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
