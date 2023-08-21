@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 147499814}
   - component: {fileID: 147499817}
   - component: {fileID: 147499818}
+  - component: {fileID: 147499819}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -683,9 +684,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdad222727574734083ebfa2b294f6b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
   playerCamera: {fileID: 147499815}
   circleCentre: {x: 0, y: 5, z: 0}
   circleRadius: 20
+--- !u!114 &147499819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147499813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5d59b20fec9ef345b932006a203ba71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateCamera: {fileID: 147499818}
+  level: {fileID: 0}
+  sides: 4
 --- !u!1 &152506277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,7 +2320,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 973078667}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 147499819}
+        m_TargetAssemblyTypeName: LevelChoose, Assembly-CSharp
+        m_MethodName: ChooseLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &973078667
 MonoBehaviour:
   m_ObjectHideFlags: 0

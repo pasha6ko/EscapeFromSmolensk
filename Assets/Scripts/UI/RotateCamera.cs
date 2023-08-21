@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class RotateCamera : MonoBehaviour
 {
+    public int side = 0;
+
     [Header("Camera Components")]
     [SerializeField] private Camera playerCamera;
     [Header("Circle Settings")]
@@ -67,6 +69,7 @@ public class RotateCamera : MonoBehaviour
 
     private IEnumerator RotateCameraSmoothly()
     {
+        side += direct == Rotating.Right ? -1 : 1;
         _isRotating = true;
 
         SetAngleAndPosition();
