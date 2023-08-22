@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AnyKeyClick",
+                    "name": "EKeyClick",
                     "type": "Button",
                     "id": "f3559885-78d9-4321-bc92-48b1e5063767",
                     "expectedControlType": "Button",
@@ -344,11 +344,11 @@
                 {
                     "name": "",
                     "id": "55a24f67-3b8c-4dbc-a232-b376849a40ff",
-                    "path": "<Keyboard>/anyKey",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "AnyKeyClick",
+                    "action": "EKeyClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

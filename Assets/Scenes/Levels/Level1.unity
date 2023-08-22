@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.009012734, g: 0.013102855, b: 0.02050359, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3520,49 +3520,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1688916136}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &760511090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8334a49e76cafef4da22976db1613959, type: 3}
-  m_Name: Default Aura Quality Settings
-  m_EditorClassIdentifier: 
-  displayVolumetricLightingBuffer: 0
-  frustumGridResolution: {x: 160, y: 88, z: 128}
-  enableAutomaticStereoResizing: 1
-  farClipPlaneDistance: 128
-  depthBiasCoefficient: 0.35
-  enableVolumes: 1
-  enableVolumesTexture2DMask: 1
-  enableVolumesTexture3DMask: 1
-  enableVolumesNoiseMask: 1
-  enableAmbientLighting: 1
-  enableDirectionalLights: 1
-  enableDirectionalLightsShadows: 1
-  enableSpotLights: 1
-  enableSpotLightsShadows: 1
-  enablePointLights: 1
-  enablePointLightsShadows: 1
-  enableLightsCookies: 1
-  enableDithering: 1
-  texture3DFiltering: 1
-  EXPERIMENTAL_enableDenoisingFilter: 0
-  EXPERIMENTAL_denoisingFilterRange: 0
-  EXPERIMENTAL_enableBlurFilter: 0
-  EXPERIMENTAL_blurFilterRange: 0
-  EXPERIMENTAL_blurFilterType: 0
-  EXPERIMENTAL_blurFilterGaussianDeviation: 0.0025
-  enableTemporalReprojection: 1
-  temporalReprojectionFactor: 0.95
-  enableOcclusionCulling: 1
-  debugOcclusionCulling: 0
-  occlusionCullingAccuracy: 0
-  enableLightProbes: 0
 --- !u!4 &794079837 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4120639951176104386, guid: fea2d717b9668e649af1e0993a2f81c8,
@@ -7098,6 +7055,11 @@ PrefabInstance:
       objectReference: {fileID: 132902420}
     - target: {fileID: 2710262289675340858, guid: 94171608cbc12dd49bb08b6d307d84e9,
         type: 3}
+      propertyPath: playerLook
+      value: 
+      objectReference: {fileID: 1750206451}
+    - target: {fileID: 2710262289675340858, guid: 94171608cbc12dd49bb08b6d307d84e9,
+        type: 3}
       propertyPath: continueButton
       value: 
       objectReference: {fileID: 191705226}
@@ -7278,32 +7240,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fea2d717b9668e649af1e0993a2f81c8, type: 3}
---- !u!114 &1622049174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59306422a2ca4454aabce3daa79c3334, type: 3}
-  m_Name: New Aura Base Settings
-  m_EditorClassIdentifier: 
-  useDensity: 1
-  density: 0.3
-  useScattering: 1
-  scattering: 0.75
-  useAmbientLighting: 1
-  ambientLightingStrength: 1
-  useColor: 0
-  color: {r: 0, g: 0.5, b: 0.5, a: 0.5}
-  colorStrength: 1
-  useTint: 0
-  tint: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  tintStrength: 1
-  useExtinction: 0
-  extinction: 0.75
 --- !u!4 &1668747332 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5073791995574066502, guid: 4f263e779aed56545ac53111213a6fdb,
@@ -7868,6 +7804,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 272444363}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1750206451 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2302551255365041120, guid: 94171608cbc12dd49bb08b6d307d84e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1574026173}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e885cb875218e847adc3a34ba1149be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1754950161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9264,9 +9212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdcd06815c47d30489f70df42db56a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frustumSettings:
-    baseSettings: {fileID: 1622049174}
-    qualitySettings: {fileID: 760511090}
 --- !u!1001 &2113360806
 PrefabInstance:
   m_ObjectHideFlags: 0

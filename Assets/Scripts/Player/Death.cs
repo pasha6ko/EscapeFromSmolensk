@@ -22,24 +22,26 @@ public class Death : MonoBehaviour
         deathUI.SetActive(true);
         isDead = true;
         yield return new WaitForSeconds(10f);
-        OnAnyKeyClick();
+        OnEKeyClick();
 
     }
 
     public void StartDeath()
     {
+        if (isDead) return;
         StartCoroutine(Recovery());
         Destroy(playerMovement);
     }
 
-    public void OnAnyKeyClick()
+    public void OnEKeyClick()
     {
         if (!isDead) return;
-        OnDeath?.Invoke();
-        SwitchOn?.Invoke();
-
         deathVideo.SetActive(false);
         deathUI.SetActive(false);
+
+        isDead = false;
+        OnDeath?.Invoke();
+        SwitchOn?.Invoke();
 
         StopCoroutine(Recovery());
         Destroy(gameObject);

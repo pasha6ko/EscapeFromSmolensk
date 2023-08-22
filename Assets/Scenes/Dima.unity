@@ -955,8 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9aa0beae751fa4da9ff63646584e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenActes: 0.8
-  damageType: 1
+  timeBetweenActes: 0.01
+  damageType: 2
 --- !u!1 &612296771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,6 +2734,11 @@ PrefabInstance:
     - target: {fileID: 4988411207847246510, guid: 82b27709baae7344babdc2c342d6c0a7,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067907377552596925, guid: 82b27709baae7344babdc2c342d6c0a7,
+        type: 3}
+      propertyPath: m_WaitForFirstFrame
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8736374474395881149, guid: 82b27709baae7344babdc2c342d6c0a7,
