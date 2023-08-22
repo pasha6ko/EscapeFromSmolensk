@@ -14,6 +14,7 @@ public class ScoreCounter : MonoBehaviour
     [Header("Score Settings")]
     [SerializeField] private int startScore;
     [SerializeField] private TextMeshProUGUI textScore;
+    [SerializeField] private TextMeshProUGUI endScore;
 
     private int _scoreNow;
 
@@ -48,6 +49,7 @@ public class ScoreCounter : MonoBehaviour
     {
         _scoreNow = Math.Clamp(_scoreNow, 0, startScore);
         textScore.text = $"{_scoreNow}";
+        endScore.text = $"{_scoreNow}";
 
         if (_scoreNow > 0) return;
         RestartLevel();
