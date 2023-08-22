@@ -2637,6 +2637,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2270603341114553601, guid: 82b27709baae7344babdc2c342d6c0a7,
         type: 3}
+      propertyPath: m_Name
+      value: DeathImage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270603341114553601, guid: 82b27709baae7344babdc2c342d6c0a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270603341114553601, guid: 82b27709baae7344babdc2c342d6c0a7,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -2860,10 +2870,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 207664913403200843, guid: 82b27709baae7344babdc2c342d6c0a7, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 6189980276259306364, guid: 82b27709baae7344babdc2c342d6c0a7, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2270603341114553601, guid: 82b27709baae7344babdc2c342d6c0a7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 426059485}
   m_SourcePrefab: {fileID: 100100000, guid: 82b27709baae7344babdc2c342d6c0a7, type: 3}
 --- !u!114 &426059476 stripped
 MonoBehaviour:
@@ -2877,12 +2893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &426059477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6189980276259306364, guid: 82b27709baae7344babdc2c342d6c0a7,
-    type: 3}
-  m_PrefabInstance: {fileID: 426059475}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &426059478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2270603341114553601, guid: 82b27709baae7344babdc2c342d6c0a7,
@@ -2901,6 +2911,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &426059485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426059478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 734333d8ebaf71745bdf055cb4b264be, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &437297017
 GameObject:
   m_ObjectHideFlags: 0
@@ -8149,7 +8189,7 @@ PrefabInstance:
         type: 3}
       propertyPath: deathVideo
       value: 
-      objectReference: {fileID: 426059477}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
