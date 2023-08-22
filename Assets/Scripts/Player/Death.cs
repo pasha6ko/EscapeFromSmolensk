@@ -20,8 +20,9 @@ public class Death : MonoBehaviour
         ScoreCounter.Instance.Damage(2);
         deathVideo.SetActive(true);
         deathUI.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
         isDead = true;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(9.5f);
         OnEKeyClick();
 
     }
@@ -36,6 +37,7 @@ public class Death : MonoBehaviour
     public void OnEKeyClick()
     {
         if (!isDead) return;
+        print("oh no...");
         deathVideo.SetActive(false);
         deathUI.SetActive(false);
 
