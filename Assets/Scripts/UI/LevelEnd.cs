@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LevelEnd : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
-    private PlayerLook playerLook;
+    private PlayerMovement _playerMovement;
+    private PlayerLook _playerLook;
+    private HeadShaking _headShaking;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,14 +17,16 @@ public class LevelEnd : MonoBehaviour
 
     private void End()
     {
-        playerMovement.enabled = false;
-        playerLook.enabled = false;
+        _playerMovement.enabled = false;
+        _playerLook.enabled = false;
+        _headShaking.enabled = false;
         Cursor.lockState = CursorLockMode.None;
     }
 
     private void CheckComponents(Collider other)
     {
-        playerMovement = other.GetComponent<PlayerMovement>();
-        playerLook = other.GetComponent<PlayerLook>();
+        _playerMovement = other.GetComponent<PlayerMovement>();
+        _playerLook = other.GetComponent<PlayerLook>();
+        _headShaking = other.GetComponent<HeadShaking>();
     }
 }
