@@ -130,7 +130,7 @@ Transform:
   m_Children:
   - {fileID: 5704536926024628076}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3298675049666311528
 MeshFilter:
@@ -318,7 +318,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 1396537709182000263}
   ropeStartPoint: {fileID: 8770793504835693229}
   FOV: 80
-  liftForce: 1
+  liftForce: 1.2
   recoverTime: 2
   inAirLockTime: 1
 --- !u!114 &6265510210176287245
@@ -337,6 +337,7 @@ MonoBehaviour:
   playerMovement: {fileID: 5707485274259336424}
   rb: {fileID: 8113830094378422181}
   timeFreeze: {fileID: 7714717400560970386}
+  dashBar: {fileID: 0}
   dashMaxCount: 3
   dashTime: 0.3
   dashRecoverTime: 1
@@ -598,6 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 5707485274259336424}
+  playerLook: {fileID: 2302551255365041120}
   pause: {fileID: 0}
   continueButton: {fileID: 0}
   exitButton: {fileID: 0}

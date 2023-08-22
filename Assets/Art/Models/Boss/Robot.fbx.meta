@@ -3,7 +3,17 @@ guid: e0097eab0a152e141b38c4bca596c89f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Robot1.001
+    second: {fileID: 2100000, guid: 87fd6d09e517535499ba3d55f28ddfcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Robot2.001
+    second: {fileID: 2100000, guid: a4ae39c3abfce6641a4ae42d3dbf931c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -16,8 +26,7 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
-      human bone 'LeftUpperLeg' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 

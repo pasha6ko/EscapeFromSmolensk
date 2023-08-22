@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         float magnitude = _inputVector.magnitude;
         bool inAir = movementState == MovementStates.InAir;
         if (movementState == MovementStates.WallRun) return;
+        playerRb.useGravity = true;
         if (!inAir)
         {
             Run();

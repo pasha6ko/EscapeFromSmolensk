@@ -4,8 +4,6 @@ using UnityEngine.Rendering.Universal;
 
 public class BlindZone : MonoBehaviour
 {
-    [Header("Blind Settings")]
-    [SerializeField, Range(10f, 150f)] private float targetFov;
     [Header("Blind Components")]
     [SerializeField] private Volume postProcessing;
 
