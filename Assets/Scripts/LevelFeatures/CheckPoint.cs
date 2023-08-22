@@ -24,7 +24,7 @@ public class CheckPoint : MonoBehaviour
         checkpoint.transform.tag = "Untagged";
 
         Vector3 checkpointPosition = collision.gameObject.transform.position;
-        checkpointPosition = new Vector3(checkpointPosition.x, transform.position.y, checkpointPosition.z);
+        checkpointPosition = new Vector3(checkpointPosition.x, checkpointPosition.y + 1f, checkpointPosition.z);
 
         AddLastCheckPoint(checkpointPosition);
     }
