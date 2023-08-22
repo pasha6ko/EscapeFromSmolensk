@@ -37,7 +37,6 @@ public class Death : MonoBehaviour
     public void OnEKeyClick()
     {
         if (!isDead) return;
-        print("oh no...");
         deathVideo.SetActive(false);
         deathUI.SetActive(false);
 
