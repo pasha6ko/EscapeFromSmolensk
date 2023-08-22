@@ -20,7 +20,10 @@ public class Death : MonoBehaviour
         deathUI.SetActive(true);
         isDead = true;
         yield return new WaitForSeconds(1f);
+        OnDeath?.Invoke();
+        SwitchOn?.Invoke();
         deathUI.SetActive(false);
+        Destroy(gameObject);
     }
 
     public void StartDeath()
