@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class BossRobot : MonoBehaviour
 {
+    [Header("Events Components")]
     [SerializeField] private UnityEvent events;
     public void Death()
     {

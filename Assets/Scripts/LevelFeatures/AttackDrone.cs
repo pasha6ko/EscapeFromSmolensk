@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class AttackDrone : MonoBehaviour
 {
-    [Header("Components")]
+    [Header("Drone Components")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform rig;
     [SerializeField] private GameObject bullet;
     [SerializeField] private SoundPlayer sound;
     private Transform _player;
-    [Header("Settings")]
+    [Header("Drone Settings")]
     [SerializeField] private bool freeRotation;
     [SerializeField] private float timeBetweenFire;
     private Coroutine _fireProcess;

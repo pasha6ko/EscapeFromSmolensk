@@ -92,16 +92,5 @@ public class Lift : MonoBehaviour
         if (mainHookRender == null) return false;
 
         return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(cam), mainHookRender.bounds);
-        /*
-        Vector3 direction = point.transform.position - cam.transform.position;
-
-        Vector3 angle = Quaternion.FromToRotation(cam.forward, direction).eulerAngles;
-        if ((angle.x > 360 - 20 || angle.x < 0 + 20) && (angle.y > 360 - FOV / 2 || angle.y < FOV / 2))
-        {
-            Debug.DrawRay(transform.position + Vector3.up, point.transform.position - transform.position, Color.green);
-            return true;
-        }
-        Debug.DrawRay(transform.position + Vector3.up, point.transform.position - transform.position, Color.red);
-        return false;*/
     }
 }

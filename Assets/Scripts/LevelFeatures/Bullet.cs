@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("Bullet Settings")]
     [SerializeField] private float speed;
     
     private void Update()

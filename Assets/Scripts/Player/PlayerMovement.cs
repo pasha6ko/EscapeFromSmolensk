@@ -70,12 +70,6 @@ public class PlayerMovement : MonoBehaviour
         movementState = MovementStates.InAirRun;
     }
 
-    private void Run()
-    {
-        Vector3 direction = (_inputVector.x * playerRb.transform.right + _inputVector.y * playerRb.transform.forward) * speed * _dashForce;
-        playerRb.velocity = new Vector3(direction.x, playerRb.velocity.y, direction.z);
-    }
-
     public bool IsGrounded()
     {
         float _distanceToTheGround = playerCollider.bounds.extents.y;
@@ -83,4 +77,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void SetInveseInput(bool value) => invertedInput = value;
+
+    private void Run()
+    {
+        Vector3 direction = (_inputVector.x * playerRb.transform.right + _inputVector.y * playerRb.transform.forward) * speed * _dashForce;
+        playerRb.velocity = new Vector3(direction.x, playerRb.velocity.y, direction.z);
+    }
 }

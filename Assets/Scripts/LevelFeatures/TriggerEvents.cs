@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class TriggerEvents : MonoBehaviour
 {
+    [Header("Events Components")]
     [SerializeField] private UnityEvent events;
 
     private void OnTriggerEnter(Collider other)

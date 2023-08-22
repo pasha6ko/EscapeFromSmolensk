@@ -10,10 +10,12 @@ public class TimeFreeze : MonoBehaviour
         Normal,
         Fast
     }
+
     [SerializeField] private float smoothChangeTime;
     [SerializeField, Range(0,1f)] private float minScale,maxScale;
     private float startUpdates;
     private Coroutine timeChangeProcess;
+
     private void Start()
     {
         startUpdates = Time.fixedDeltaTime;

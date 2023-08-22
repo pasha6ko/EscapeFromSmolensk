@@ -40,7 +40,7 @@ public class SoundPlayer : MonoBehaviour
     public void PlayRandomClip()
     {
         int length = audioClipList.Count;
-        audioSource.clip = audioClipList[Random.RandomRange(0, length)];
+        audioSource.clip = audioClipList[Random.Range(0, length)];
         audioSource.Play();
     }
 

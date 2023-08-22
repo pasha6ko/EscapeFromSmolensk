@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayLevel : MonoBehaviour
 {
+    [Header("Level Settings")]
     [SerializeField] private string sceneName;
 
     public void LoadScene()
