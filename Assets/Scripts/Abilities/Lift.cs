@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Lift : MonoBehaviour
 {
     [HideInInspector] public Transform mainHook;
+    [HideInInspector] public Renderer mainHookRender;
     [HideInInspector] public List<Transform> hooks = new List<Transform>();
 
     [Header("Player Components")]
-    [SerializeField] private Transform cam;
+    [SerializeField] private Camera cam;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Transform marker;
@@ -25,7 +27,7 @@ public class Lift : MonoBehaviour
     private void Update()
     {
         if (marker == null) return;
-        if (mainHook == null || !InFieldOfView(mainHook))
+        if (mainHook == null || !InFieldOfView(mainHook))   
         {
             marker.gameObject.SetActive(false);
             return;
@@ -44,12 +46,13 @@ public class Lift : MonoBehaviour
         foreach (Transform hook in hooks)
         {
             Vector3 diraction = transform.position - hook.position;
-            diraction = diraction.normalized - cam.forward;
+            diraction = diraction.normalized - cam.transform.forward;
             if (max > diraction.magnitude) continue;
             max = diraction.magnitude;
             closestHook = hook;
         }
         mainHook = closestHook;
+        mainHookRender = mainHook.GetComponent<Renderer>();
     }
 
     public void OnLift()
@@ -86,6 +89,10 @@ public class Lift : MonoBehaviour
 
     private bool InFieldOfView(Transform point)
     {
+        if (mainHookRender == null) return false;
+
+        return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(cam), mainHookRender.bounds);
+        /*
         Vector3 direction = point.transform.position - cam.transform.position;
 
         Vector3 angle = Quaternion.FromToRotation(cam.forward, direction).eulerAngles;
@@ -95,6 +102,6 @@ public class Lift : MonoBehaviour
             return true;
         }
         Debug.DrawRay(transform.position + Vector3.up, point.transform.position - transform.position, Color.red);
-        return false;
+        return false;*/
     }
 }

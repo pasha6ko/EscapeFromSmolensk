@@ -310,14 +310,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainHook: {fileID: 0}
+  mainHookRender: {fileID: 0}
   hooks: []
-  cam: {fileID: 5704536926024628076}
+  cam: {fileID: 3340205328240659110}
   rb: {fileID: 8113830094378422181}
   playerMovement: {fileID: 5707485274259336424}
   marker: {fileID: 0}
   lineRenderer: {fileID: 1396537709182000263}
   ropeStartPoint: {fileID: 8770793504835693229}
-  FOV: 80
+  FOV: 60
   liftForce: 1.2
   recoverTime: 2
   inAirLockTime: 1
