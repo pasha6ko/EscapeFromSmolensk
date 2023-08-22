@@ -21,8 +21,6 @@
 #IgnorMeta
 
 #Videos
-*.mp4
-*.waw
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
