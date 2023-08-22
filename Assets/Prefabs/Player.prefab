@@ -435,7 +435,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: dcc84dcc6862cbd4983043a97fc634b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -532,7 +532,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 5707485274259336424}
   playerCheckPoint: {fileID: 40587087426889541}
-  deathVideo: {fileID: 0}
   deathUI: {fileID: 0}
   isDead: 0
 --- !u!114 &3645478935181073985
@@ -755,7 +754,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
